@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>環安衛航標 HSE Beacon</title>
+  <meta name="description" content="追蹤台灣與國際環安衛公告、事故調查與改善案例，整理成可帶回現場的風險管理做法，並提出台灣職場行為科學的研究問題。">
+  <link rel="canonical" href="https://hsebeacon.tw/">
+  <meta name="theme-color" content="#123631">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="環安衛航標 HSE Beacon">
+  <meta property="og:title" content="環安衛航標 HSE Beacon">
+  <meta property="og:description" content="台灣與國際環安衛趨勢｜風險管理實戰｜台灣職場行為科學">
+  <meta property="og:url" content="https://hsebeacon.tw/">
+  <meta property="og:locale" content="zh_TW">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23123631'/%3E%3Cpath d='M12 27l2-15h4l2 15z' fill='%23f3f5ec'/%3E%3Cpath d='M13.2 18h5.6l.5 4h-6.6z' fill='%23e98935'/%3E%3Crect x='13' y='7' width='6' height='5' fill='%23d9f295'/%3E%3Cpath d='M12 7l4-4 4 4z' fill='%23f3f5ec'/%3E%3C/svg%3E">
+  <meta property="og:image" content="https://hsebeacon.tw/og.png">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebSite","name":"環安衛航標 HSE Beacon","alternateName":"HSE Beacon","inLanguage":"zh-Hant-TW","url":"https://hsebeacon.tw/","description":"台灣與國際環安衛趨勢、風險管理實戰與台灣職場行為科學。"}
+  </script>
+</head>
+<body>
+<a class="skip" href="#main">跳至主要內容</a>
+<header class="site-head">
+  <div class="wrap bar">
+    <a class="brand" href="./">環安衛航標 <span lang="en">HSE Beacon</span></a>
+    <nav class="site-nav" aria-label="主要導覽">
+      <a href="#briefings">環安衛趨勢</a>
+      <a href="#practice">風險管理實戰</a>
+      <a href="#research">職場行為科學</a>
+      <a href="#about">關於本站</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="band">
+    <section class="masthead">
+      <div class="wrap masthead-grid">
+        <div>
+          <p class="masthead-en" lang="en">HSE Beacon</p>
+          <h1>環安衛航標</h1>
+          <p class="subtitle">台灣與國際環安衛趨勢｜風險管理實戰｜台灣職場行為科學</p>
+          <a class="button" href="#briefings">閱讀環安衛週報 <span aria-hidden="true">↓</span></a>
+        </div>
+        <aside class="lead-story" aria-labelledby="lead-title">
+          <p class="label">最新週報 · <time datetime="2026-11-16">2026.11.16</time></p>
+          <h2 id="lead-title">濃度降了，真的可以結案了嗎？</h2>
+          <p>台灣量到甲醇濃度下降，美國用採樣確認土壤整治達標，英格蘭用十年監測辨識 PFAS 的下降趨勢。第 3 期另追蹤土耳其 Aliağa 鋼廠事故。</p>
+          <a href="issue-03.html">閱讀第 3 期 <span aria-hidden="true">→</span></a>
+        </aside>
+      </div>
+    </section>
+
+    <section class="sea" id="sea" aria-labelledby="sea-title">
+      <div class="wrap">
+        <div class="sea-head">
+          <div>
+            <h2 id="sea-title">航標海域</h2>
+            <p>每個浮標是一則內容。拖曳旋轉海圖，點浮標看摘要。</p>
+          </div>
+          <div class="chips" role="group" aria-label="依欄目篩選浮標">
+            <button class="chip" type="button" data-ch="all" aria-pressed="true">全部</button>
+            <button class="chip" type="button" data-ch="t" aria-pressed="false"><i class="cone" style="--c:#d9f295"></i>環安衛趨勢</button>
+            <button class="chip" type="button" data-ch="p" aria-pressed="false"><i style="--c:#f5b461"></i>風險管理實戰</button>
+            <button class="chip" type="button" data-ch="r" aria-pressed="false"><i class="ball" style="--c:#a9dcef"></i>職場行為科學</button>
+          </div>
+        </div>
+        <div class="sea-grid">
+          <div class="sea-stage">
+            <canvas tabindex="0" role="img" aria-label="可旋轉的 3D 海圖：中央是燈塔，周圍 20 個浮標分屬三個欄目。按左右方向鍵切換浮標，按 Enter 前往內容；右側清單列出全部項目。"></canvas>
+            <div class="sea-hud" aria-hidden="true">燈質 Fl W 12s</div>
+            <div class="sea-tools">
+              <button type="button" data-act="out" aria-label="縮小">−</button>
+              <button type="button" data-act="in" aria-label="放大">＋</button>
+              <button type="button" data-act="reset" aria-label="回到預設視角">⟲</button>
+            </div>
+          </div>
+          <div class="sea-panel">
+            <div class="sea-card" aria-live="polite" style="display:contents">
+              <div class="meta"><span class="src official">官方來源</span><span>環安衛趨勢 · 2026.11.16</span></div>
+              <h3>第 03 期｜量得到的改善：甲醇濃度、土壤達標與 PFAS 趨勢</h3>
+              <p>五地動向、土耳其鋼廠事故追蹤，以及三個各有可查核成果的改善案例。</p>
+              <a class="go" href="issue-03.html">閱讀第 03 期 <span aria-hidden="true">→</span></a>
+            </div>
+            <details>
+              <summary>全部浮標清單（20）</summary>
+              <ul class="sea-list"></ul>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <section class="shelf" id="briefings" aria-labelledby="briefings-title">
+      <h2 id="briefings-title">台灣與國際環安衛趨勢</h2>
+      <p>追蹤主管機關公告、事故調查與改善成果，區分事件日期、已確認結果及待查事項。</p>
+      <div class="issue-list">
+        <a href="issue-03.html">
+          <span class="label">第 03 期 · 最新</span>
+          <strong>量得到的改善：甲醇濃度、土壤達標與 PFAS 趨勢</strong>
+          <span>台灣局部排氣改善、美國 York 土壤整治、英格蘭 PFAS 監測，以及土耳其鋼廠事故追蹤。</span>
+          <time datetime="2026-11-16">2026.11.16</time>
+        </a>
+        <a href="issue-02.html">
+          <span class="label">第 02 期</span>
+          <strong>離岸設施火災調查與海床防沖刷</strong>
+          <span>挪威 Visund、英國 Rampion、美國化學品申報與丹麥設備租賃。</span>
+          <time datetime="2026-11-09">2026.11.09</time>
+        </a>
+        <a href="issue-01.html">
+          <span class="label">第 01 期</span>
+          <strong>從作業暴露到工程改善</strong>
+          <span>人造石粉塵、變壓器拆解與愛爾蘭酒廠的卸桶改造。</span>
+          <time datetime="2026-11-03">資料截至 2026.11.03</time>
+        </a>
+      </div>
+    </section>
+
+    <section class="shelf" id="practice" aria-labelledby="practice-title">
+      <h2 id="practice-title">風險管理實戰</h2>
+      <div class="reading-grid">
+        <article class="reading">
+          <span class="src analysis">作者分析</span>
+          <h3>提醒了一百次，為什麼事故還是發生？</h3>
+          <p>從「叫人小心」到「讓系統不容易出錯」。用米德爾頓酒廠卸桶案例，思考如何用工程控制減少暴露，並讓一線操作員參與設計。</p>
+          <a href="article-01.html">閱讀文章全文 <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="reading">
+          <span class="src analysis">作者分析</span>
+          <h3>改善完成後，如何驗證成效？</h3>
+          <p>從海床防沖刷、化學品申報與危害通報出發，找出可查核的改善證據。核准方案前先訂好驗證指標、比較基準、重測時點與負責人。</p>
+          <a href="issue-02.html#practice">查看第 2 期現場應用 <span aria-hidden="true">→</span></a>
+        </article>
+      </div>
+    </section>
+
+    <section class="shelf split" id="research" aria-labelledby="research-title">
+      <div>
+        <p class="label">研究議程</p>
+        <h2 id="research-title">台灣職場行為科學</h2>
+        <p>從台灣職場的真實情境出發，研究工作條件如何影響人員辨識、通報與處理危害的決策。</p>
+        <p class="note"><span class="src open">待驗證問題</span>　以下是待研究的問題，作為未來案例觀察與現場試行的起點。</p>
+      </div>
+      <dl>
+        <dt>時間壓力與停工判斷</dt>
+        <dd>工期緊迫或交接資訊不足時，哪些條件會影響工作者暫停作業的決定？</dd>
+        <dt>主管回應與危害通報</dt>
+        <dd>主管首次回應的方式，以及後續是否回報處理進度，如何影響員工下次通報的意願？</dd>
+        <dt>工作設計與控制措施</dt>
+        <dd>表單、工具與設備如何影響安全步驟的執行？試行改造時，可觀察哪些步驟最常卡住或被跳過？</dd>
+      </dl>
+    </section>
+
+    <section class="shelf split" id="about" aria-labelledby="about-title">
+      <div>
+        <p class="label">關於本站</p>
+        <h2 id="about-title">從現場看環安衛</h2>
+        <p><strong>資深環安衛經理｜文字＆聲音創作者｜知識精煉師</strong></p>
+        <p>選題看的是同一件事：一則公告、一份調查或一個改善案例，能不能變成現場下週就用得上的檢查與做法。</p>
+        <p>每期週報整理台灣、美國、英國、日本與歐洲的近期動向，並分開標示事件日期、公告日期與資料截止日。專文則是作者自己的觀點。</p>
+      </div>
+      <div>
+        <h3>站上怎麼標示來源</h3>
+        <ul class="legend">
+          <li><span class="src official">官方來源</span><p>主管機關公告、事故調查與機構發布的案例報告。每則都附原始連結，數字以原文為準。</p></li>
+          <li><span class="src analysis">作者分析</span><p>作者依實務經驗提出的解讀與現場做法，不代表原機構立場。</p></li>
+          <li><span class="src open">待驗證問題</span><p>還沒有答案的研究問題，以及調查中、原因未明的事件。</p></li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap bar"><span>環安衛航標 <span lang="en">HSE Beacon</span></span><a href="#main">回到頂端 ↑</a></div>
+</footer>
+<script src="beacon3d.js" defer></script>
+</body>
+</html>

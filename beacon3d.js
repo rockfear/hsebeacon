@@ -1,0 +1,353 @@
+/* 航標海域：以 Canvas 2D 手繪透視的小型 3D 場景，不依賴任何外部函式庫。
+   燈塔居中，三個扇區對應三個欄目，每個浮標是一則內容。 */
+(function () {
+  'use strict';
+  var root = document.getElementById('sea');
+  if (!root) return;
+  var cv = root.querySelector('canvas');
+  var ctx = cv.getContext && cv.getContext('2d');
+  if (!ctx) return;
+
+  var CH = {
+    t: { name: '環安衛趨勢', color: '#d9f295', shape: 'cone', centre: 90 },
+    p: { name: '風險管理實戰', color: '#f5b461', shape: 'can', centre: 210 },
+    r: { name: '職場行為科學', color: '#a9dcef', shape: 'ball', centre: 330 }
+  };
+  var KIND = { official: '官方來源', analysis: '作者分析', open: '待驗證問題' };
+
+  var NODES = [
+    { ch: 't', short: '03 期', kind: 'official', title: '第 03 期｜量得到的改善：甲醇濃度、土壤達標與 PFAS 趨勢', meta: '2026.11.16', text: '五地動向、土耳其鋼廠事故追蹤，以及三個各有可查核成果的改善案例。', href: 'issue-03.html', cta: '閱讀第 03 期' },
+    { ch: 't', short: '台灣', kind: 'open', title: '台灣：台東工地灌漿時模板失效', meta: '11/11 報導收錄', text: '九樓灌漿時模板失效、鷹架變形。施工順序、支撐系統與失效原因仍待正式調查。', href: 'issue-03.html#regions', cta: '看第 03 期區域動向' },
+    { ch: 't', short: '美國', kind: 'official', title: '美國：York 土壤達標，Muncie 開始清理含鉛土壤', meta: '11/12 公告', text: 'York 四氯乙烯污染源區有採樣結果。Muncie 已開工，成效待驗證。', href: 'issue-03.html#regions', cta: '看第 03 期區域動向' },
+    { ch: 't', short: '英國', kind: 'official', title: '英國：英格蘭環境署發布 PFAS 評估報告', meta: '11/12 發布', text: '2016–2025 年河川 PFOS 約下降 30%、PFOA 約下降 29%。PFAS 仍廣泛存在。', href: 'issue-03.html#regions', cta: '看第 03 期區域動向' },
+    { ch: 't', short: '日本', kind: 'official', title: '日本：岡山管區死亡勞災速報達近十年最高', meta: '11/12 刊登', text: '死亡數是速報，同步安全巡查已執行。改善成效待追蹤。', href: 'issue-03.html#regions', cta: '看第 03 期區域動向' },
+    { ch: 't', short: '歐洲', kind: 'official', title: '歐洲：比利時離岸風電支持方案獲准，挪威電氣設施稽核待回覆', fig: '20.4 億', figLabel: '歐元，比利時離岸風電支持方案', meta: '11/10 公告', text: '比利時案是政策核准。挪威 Havtil 要求 Aker BP 於 11/13 前回覆，尚未查得結案證據。', href: 'issue-03.html#regions', cta: '看第 03 期區域動向' },
+    { ch: 't', short: '鋼廠', kind: 'open', title: '重大事故追蹤：土耳其 Aliağa 鋼廠天車墜落及爆炸', meta: '11/9 事故 · 調查中', text: '吊運電弧爐爐體時天車走行軌道梁脫離支承，隨後發生爆炸。原因與完整機制仍待正式調查。', href: 'issue-03.html#tracker', cta: '看事故追蹤' },
+    { ch: 't', short: '02 期', kind: 'official', title: '第 02 期｜離岸設施火災調查與海床防沖刷', meta: '2026.11.09', text: '挪威 Visund、英國 Rampion、美國化學品申報與丹麥設備租賃。', href: 'issue-02.html', cta: '閱讀第 02 期' },
+    { ch: 't', short: '01 期', kind: 'official', title: '第 01 期｜從作業暴露到工程改善', meta: '資料截至 2026.11.03', text: '人造石粉塵、變壓器拆解與愛爾蘭酒廠的卸桶改造。', href: 'issue-01.html', cta: '閱讀第 01 期' },
+
+    { ch: 'p', short: '專文', kind: 'analysis', title: '提醒了一百次，為什麼事故還是發生？', meta: '專文', text: '從「叫人小心」到「讓系統不容易出錯」。用米德爾頓酒廠卸桶案例，談工程控制與一線參與設計。', href: 'article-01.html', cta: '閱讀全文' },
+    { ch: 'p', short: '甲醇', kind: 'official', title: '甲醇沾塗作業，將排氣設計移到逸散源附近', fig: '<0.888', figLabel: 'ppm，改造後甲醇濃度（原 15.95 ppm）', meta: '台灣 · 第 03 期', text: '後吸槽式氣罩搭配局部圍封。摘要未交代完整採樣條件。', href: 'issue-03.html#case-1', cta: '看案例' },
+    { ch: 'p', short: 'York', kind: 'official', title: 'York 舊乾洗污染場址，用採樣確認整治達標', fig: '約 2 年', figLabel: 'EPA 估計達到源區目標的時間', meta: '美國 · 第 03 期', text: '所有採樣位置與深度均達到 PCE 土壤目標，後續轉向地下水污染羽流。', href: 'issue-03.html#case-2', cta: '看案例' },
+    { ch: 'p', short: 'PFAS', kind: 'official', title: 'PFAS 管理，用多年監測驗證環境變化', fig: '−30%', figLabel: '河川 PFOS，2016–2025 年', meta: '英格蘭 · 第 03 期', text: '個別措施的貢獻比例無法由趨勢數字判定，PFAS 仍廣泛存在。', href: 'issue-03.html#case-3', cta: '看案例' },
+    { ch: 'p', short: '驗證', kind: 'analysis', title: '改善完成後，如何驗證成效？', meta: '現場應用', text: '核准方案前先訂好驗證指標、比較基準、重測時點與負責人。', href: 'issue-02.html#practice', cta: '看第 02 期現場應用' },
+    { ch: 'p', short: '47 項', kind: 'official', title: '高露潔棕欖補報進口化學品資料', fig: '47 項', figLabel: '超過申報門檻的化學品', meta: '美國 · 第 02 期', text: '補齊資料是已確認成果，公開資料未提供排放或暴露變化。', href: 'issue-02.html#case-1', cta: '看案例' },
+    { ch: 'p', short: '7.5 萬', kind: 'official', title: 'Rampion 分開驗證防沖刷與生態效益', fig: '7.5 萬', figLabel: '布放的礁體方塊約數', meta: '英國 · 第 02 期', text: '布放結構經第一個冬季仍穩定，生物多樣性效益仍待監測。', href: 'issue-02.html#case-2', cta: '看案例' },
+    { ch: 'p', short: '85%', kind: 'official', title: 'GSV 把事故通報接到處理時限', fig: '逾 85%', figLabel: '案例記載的事故降幅', meta: '丹麥 · 第 02 期', text: '手機通報自動通知安全部門，並要求 36 小時內處理。各項措施的個別貢獻未拆分。', href: 'issue-02.html#case-3', cta: '看案例' },
+
+    { ch: 'r', short: '停工', kind: 'open', title: '時間壓力與停工判斷', meta: '研究議程', text: '工期緊迫或交接資訊不足時，哪些條件會影響工作者暫停作業的決定？', href: '#research', cta: '看研究議程' },
+    { ch: 'r', short: '通報', kind: 'open', title: '主管回應與危害通報', meta: '研究議程', text: '主管首次回應的方式，以及後續是否回報處理進度，如何影響員工下次通報的意願？', href: '#research', cta: '看研究議程' },
+    { ch: 'r', short: '設計', kind: 'open', title: '工作設計與控制措施', meta: '研究議程', text: '表單、工具與設備如何影響安全步驟的執行？哪些步驟最常卡住或被跳過？', href: '#research', cta: '看研究議程' }
+  ];
+
+  var RAD = Math.PI / 180, TAU = Math.PI * 2, R_SEA = 7.4;
+  // 依欄目把浮標排進各自的扇區
+  Object.keys(CH).forEach(function (k) {
+    var list = NODES.filter(function (n) { return n.ch === k; });
+    list.forEach(function (n, i) {
+      var f = (i + 0.5) / list.length * 2 - 1;
+      n.a = (CH[k].centre + f * (list.length < 7 ? 50 : 56)) * RAD;
+      n.r = list.length < 4 ? 4.6 : list.length < 7 ? (i % 2 ? 5.9 : 3.5) : [3.4, 5.9, 4.6][i % 3];
+      n.x = Math.cos(n.a) * n.r; n.z = Math.sin(n.a) * n.r;
+      n.phase = i * 1.7 + CH[k].centre;
+    });
+  });
+
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var W = 0, H = 0, dpr = 1;
+  var yaw = 0, pitch = 0.52, zoom = 1, targetYaw = null;
+  var filter = 'all', selected = NODES[0], hover = null;
+  var lastTouch = -1e9, visible = true, t = 0, last = 0, raf = 0;
+  var cx, cy, F, D = 22, cosY, sinY, cosP, sinP;
+
+  function setCam() {
+    cosY = Math.cos(yaw); sinY = Math.sin(yaw); cosP = Math.cos(pitch); sinP = Math.sin(pitch);
+    var base = Math.min(W * 0.44, H * 0.9) / R_SEA;
+    F = base * D * zoom; cx = W / 2; cy = H * 0.57;
+  }
+  function proj(x, y, z) {
+    var x1 = x * cosY + z * sinY, z1 = -x * sinY + z * cosY;
+    var y2 = y * cosP - z1 * sinP, z2 = y * sinP + z1 * cosP;
+    var s = F / (D - z2);
+    return { x: cx + x1 * s, y: cy - y2 * s, s: s, d: z1 };
+  }
+  function wrap(a) { a = (a + Math.PI) % TAU; if (a < 0) a += TAU; return a - Math.PI; }
+
+  function resize() {
+    var r = cv.getBoundingClientRect();
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = Math.max(200, r.width); H = Math.max(200, r.height);
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    draw();
+  }
+
+  function ring(r, style, lw, dash) {
+    ctx.beginPath();
+    for (var i = 0; i <= 72; i++) {
+      var a = i / 72 * TAU, p = proj(Math.cos(a) * r, 0, Math.sin(a) * r);
+      if (i) ctx.lineTo(p.x, p.y); else ctx.moveTo(p.x, p.y);
+    }
+    ctx.strokeStyle = style; ctx.lineWidth = lw; ctx.setLineDash(dash || []); ctx.stroke(); ctx.setLineDash([]);
+  }
+  function seg(a, r0, r1, style, lw) {
+    var p = proj(Math.cos(a) * r0, 0, Math.sin(a) * r0), q = proj(Math.cos(a) * r1, 0, Math.sin(a) * r1);
+    ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.strokeStyle = style; ctx.lineWidth = lw; ctx.stroke();
+  }
+
+  function drawSea() {
+    var g = ctx.createLinearGradient(0, 0, 0, H);
+    g.addColorStop(0, '#0a231f'); g.addColorStop(1, '#0f302a');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    // 海面圓盤
+    ctx.beginPath();
+    for (var i = 0; i <= 72; i++) { var a = i / 72 * TAU, p = proj(Math.cos(a) * R_SEA, 0, Math.sin(a) * R_SEA); if (i) ctx.lineTo(p.x, p.y); else ctx.moveTo(p.x, p.y); }
+    var c0 = proj(0, 0, 0);
+    var sg = ctx.createRadialGradient(c0.x, c0.y, 0, c0.x, c0.y, R_SEA * c0.s);
+    sg.addColorStop(0, '#1d4d43'); sg.addColorStop(1, '#123631');
+    ctx.fillStyle = sg; ctx.fill();
+    for (var r = 1.5; r < R_SEA; r += 1.5) ring(r, 'rgba(184,235,158,.13)', 1);
+    ring(R_SEA, 'rgba(217,242,149,.55)', 1.5);
+    for (var d = 0; d < 360; d += 10) {
+      var major = d % 30 === 0;
+      seg(d * RAD, major ? R_SEA - 0.35 : R_SEA - 0.18, R_SEA, 'rgba(217,242,149,' + (major ? '.6' : '.3') + ')', 1);
+    }
+    for (d = 0; d < 360; d += 30) seg(d * RAD, 1.5, R_SEA - 0.35, 'rgba(255,255,255,.05)', 1);
+    // 扇區分界與名稱
+    [30, 150, 270].forEach(function (b) { seg(b * RAD, 1.2, R_SEA, 'rgba(217,242,149,.32)', 1.2); });
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    Object.keys(CH).forEach(function (k) {
+      var a = CH[k].centre * RAD, p = proj(Math.cos(a) * (R_SEA + 0.6), 0, Math.sin(a) * (R_SEA + 0.6));
+      var front = (p.d / (R_SEA + 0.6) + 1) / 2;
+      ctx.globalAlpha = (filter === 'all' || filter === k ? 1 : 0.35) * (0.35 + 0.65 * front);
+      ctx.font = '700 ' + Math.round(Math.max(12, Math.min(15, W / 42))) + 'px system-ui, "PingFang TC", "Microsoft JhengHei", sans-serif';
+      ctx.fillStyle = CH[k].color; ctx.fillText(CH[k].name, p.x, p.y);
+    });
+    ctx.globalAlpha = 1;
+  }
+
+  function beamAngle() { return reduce ? (selected ? selected.a : 90 * RAD) : (t * TAU / 12) % TAU; }
+
+  function drawBeam(b) {
+    var top = proj(0, 3.05, 0), half = 0.17, pts = [];
+    for (var i = 0; i <= 8; i++) { var a = b - half + i / 8 * half * 2; pts.push(proj(Math.cos(a) * R_SEA, 0, Math.sin(a) * R_SEA)); }
+    var o = proj(0, 0, 0), tip = proj(Math.cos(b) * R_SEA, 0, Math.sin(b) * R_SEA);
+    var g = ctx.createLinearGradient(o.x, o.y, tip.x, tip.y);
+    g.addColorStop(0, 'rgba(217,242,149,.42)'); g.addColorStop(1, 'rgba(217,242,149,.04)');
+    ctx.beginPath(); ctx.moveTo(o.x, o.y); pts.forEach(function (p) { ctx.lineTo(p.x, p.y); }); ctx.closePath(); ctx.fillStyle = g; ctx.fill();
+    var g2 = ctx.createLinearGradient(top.x, top.y, tip.x, tip.y);
+    g2.addColorStop(0, 'rgba(255,255,230,.30)'); g2.addColorStop(1, 'rgba(255,255,230,0)');
+    ctx.beginPath(); ctx.moveTo(top.x, top.y); ctx.lineTo(pts[0].x, pts[0].y); ctx.lineTo(pts[8].x, pts[8].y); ctx.closePath(); ctx.fillStyle = g2; ctx.fill();
+  }
+
+  function drawLighthouse() {
+    var p = proj(0, 0, 0), s = p.s, x = p.x, y = p.y;
+    ctx.beginPath(); ctx.ellipse(x, y, 0.95 * s, 0.95 * s * sinP, 0, 0, TAU); ctx.fillStyle = '#31463f'; ctx.fill();
+    ctx.beginPath(); ctx.ellipse(x, y - 0.08 * s, 0.7 * s, 0.7 * s * sinP, 0, 0, TAU); ctx.fillStyle = '#4b6259'; ctx.fill();
+    var hb = 2.6, wb = 0.42, wt = 0.26;
+    for (var i = 0; i < 4; i++) {
+      var f0 = i / 4, f1 = (i + 1) / 4, w0 = wb + (wt - wb) * f0, w1 = wb + (wt - wb) * f1;
+      ctx.beginPath();
+      ctx.moveTo(x - w0 * s, y - f0 * hb * s); ctx.lineTo(x + w0 * s, y - f0 * hb * s);
+      ctx.lineTo(x + w1 * s, y - f1 * hb * s); ctx.lineTo(x - w1 * s, y - f1 * hb * s); ctx.closePath();
+      ctx.fillStyle = i % 2 ? '#e98935' : '#f3f5ec'; ctx.fill();
+    }
+    ctx.fillStyle = 'rgba(0,0,0,.16)';
+    ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + wb * s, y); ctx.lineTo(x + wt * s, y - hb * s); ctx.lineTo(x, y - hb * s); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#123631'; ctx.fillRect(x - 0.4 * s, y - (hb + 0.08) * s, 0.8 * s, 0.1 * s);
+    ctx.save(); ctx.shadowColor = '#fffbe0'; ctx.shadowBlur = 0.9 * s;
+    ctx.fillStyle = '#fffbd6'; ctx.fillRect(x - 0.2 * s, y - (hb + 0.52) * s, 0.4 * s, 0.44 * s); ctx.restore();
+    ctx.beginPath(); ctx.moveTo(x - 0.3 * s, y - (hb + 0.52) * s); ctx.lineTo(x + 0.3 * s, y - (hb + 0.52) * s); ctx.lineTo(x, y - (hb + 0.85) * s); ctx.closePath();
+    ctx.fillStyle = '#123631'; ctx.fill(); ctx.strokeStyle = '#d9f295'; ctx.lineWidth = 1; ctx.stroke();
+  }
+
+  function drawBuoy(n, p, lit) {
+    var c = CH[n.ch], on = filter === 'all' || filter === n.ch;
+    var isSel = n === selected, isHov = n === hover;
+    var s = Math.max(p.s, 17), x = p.x, bob = reduce ? 0 : Math.sin(t * 1.4 + n.phase) * 0.05 * s, y = p.y + bob;
+    var tilt = reduce ? 0 : Math.sin(t * 1.1 + n.phase) * 0.05;
+    ctx.globalAlpha = on ? 1 : 0.22;
+    if (isSel) {
+      var pulse = reduce ? 0.5 : (Math.sin(t * 3) + 1) / 2;
+      ctx.beginPath(); ctx.ellipse(p.x, p.y, (0.62 + pulse * 0.12) * s, (0.62 + pulse * 0.12) * s * sinP, 0, 0, TAU);
+      ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; ctx.stroke();
+    }
+    ctx.beginPath(); ctx.ellipse(p.x, p.y, 0.4 * s, 0.4 * s * sinP, 0, 0, TAU); ctx.fillStyle = 'rgba(5,22,19,.5)'; ctx.fill();
+    ctx.save(); ctx.translate(x, y); ctx.rotate(tilt);
+    ctx.beginPath(); ctx.moveTo(-0.3 * s, 0); ctx.lineTo(0.3 * s, 0); ctx.lineTo(0.2 * s, -0.36 * s); ctx.lineTo(-0.2 * s, -0.36 * s); ctx.closePath();
+    ctx.fillStyle = c.color; ctx.fill();
+    ctx.fillStyle = 'rgba(0,0,0,.22)'; ctx.fillRect(0, -0.36 * s, 0.25 * s, 0.36 * s);
+    ctx.strokeStyle = '#eef3e6'; ctx.lineWidth = Math.max(1.5, 0.05 * s);
+    ctx.beginPath(); ctx.moveTo(0, -0.36 * s); ctx.lineTo(0, -0.92 * s); ctx.stroke();
+    var m = 0.19 * s, ty = -1.0 * s;
+    ctx.fillStyle = c.color; ctx.beginPath();
+    if (c.shape === 'cone') { ctx.moveTo(0, ty - m * 1.15); ctx.lineTo(m, ty + m * 0.7); ctx.lineTo(-m, ty + m * 0.7); ctx.closePath(); }
+    else if (c.shape === 'can') { ctx.rect(-m * 0.85, ty - m * 0.85, m * 1.7, m * 1.7); }
+    else { ctx.arc(0, ty, m, 0, TAU); }
+    ctx.fill();
+    var glow = Math.max(lit, isSel || isHov ? 1 : 0);
+    if (glow > 0.02 && on) {
+      ctx.shadowColor = '#fffbe0'; ctx.shadowBlur = 14 * glow; ctx.globalAlpha = glow;
+      ctx.fillStyle = '#fffbd6'; ctx.beginPath(); ctx.arc(0, ty - m * 1.7, 2 + 2.5 * glow, 0, TAU); ctx.fill();
+      ctx.shadowBlur = 0;
+    }
+    ctx.restore();
+    // 標籤：近處常亮，遠處在光束掃過時浮現
+    var front = (p.d / 6 + 1) / 2;
+    var la = on ? Math.max(isSel || isHov ? 1 : 0, 0.3 + 0.55 * front, lit) : 0.15;
+    ctx.globalAlpha = Math.min(1, la);
+    var fs = Math.round(Math.max(11, Math.min(14, s * 0.42)));
+    ctx.font = (isSel || isHov ? '800 ' : '600 ') + fs + 'px system-ui, "PingFang TC", "Microsoft JhengHei", sans-serif';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+    var ly = p.y + 0.4 * s * sinP + 5, tw = ctx.measureText(n.short).width;
+    if (isSel || isHov) { ctx.fillStyle = '#d9f295'; ctx.fillRect(p.x - tw / 2 - 5, ly - 2, tw + 10, fs + 6); ctx.fillStyle = '#123631'; }
+    else { ctx.fillStyle = '#f3f5ec'; }
+    ctx.fillText(n.short, p.x, ly + 1);
+    ctx.globalAlpha = 1;
+    n._hx = x; n._hy = y - 0.5 * s; n._hr = Math.max(24, 0.62 * s);
+  }
+
+  var hud = root.querySelector('.sea-hud');
+  function draw() {
+    if (!W) return;
+    setCam();
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    drawSea();
+    var b = beamAngle();
+    drawBeam(b);
+    var items = NODES.map(function (n) { return { n: n, p: proj(n.x, 0, n.z) }; });
+    items.push({ n: null, p: proj(0, 0, 0) });
+    items.sort(function (a, c) { return a.p.d - c.p.d; });
+    items.forEach(function (it) {
+      if (!it.n) return drawLighthouse();
+      var diff = Math.abs(wrap(it.n.a - b));
+      drawBuoy(it.n, it.p, Math.max(0, 1 - diff / 0.4));
+    });
+    if (hud) {
+      var brg = Math.round(((yaw / RAD) % 360 + 360) % 360);
+      hud.textContent = '燈質 Fl W 12s　方位 ' + ('00' + brg).slice(-3) + '°';
+    }
+  }
+
+  function frame(now) {
+    raf = 0;
+    var dt = Math.min(0.05, (now - last) / 1000 || 0); last = now;
+    if (!reduce) t += dt;
+    if (targetYaw !== null) {
+      var d = wrap(targetYaw - yaw);
+      if (Math.abs(d) < 0.002 || reduce) { yaw = targetYaw; targetYaw = null; } else yaw += d * Math.min(1, dt * 4.5);
+    } else if (!reduce && !dragging && now - lastTouch > 7000) {
+      yaw += dt * 0.045;
+    }
+    draw();
+    if (visible && (!reduce || targetYaw !== null)) raf = requestAnimationFrame(frame);
+  }
+  function kick() { if (!raf && visible) { last = performance.now(); raf = requestAnimationFrame(frame); } }
+
+  // 資訊面板
+  var panel = root.querySelector('.sea-card');
+  var listEl = root.querySelector('.sea-list');
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function render() {
+    var n = selected; if (!n || !panel) return;
+    panel.innerHTML =
+      '<div class="meta"><span class="src ' + n.kind + '">' + KIND[n.kind] + '</span><span>' + esc(CH[n.ch].name) + ' · ' + esc(n.meta) + '</span></div>' +
+      '<h3>' + esc(n.title) + '</h3>' +
+      (n.fig ? '<p class="fig"><b>' + esc(n.fig) + '</b><span>' + esc(n.figLabel) + '</span></p>' : '') +
+      '<p>' + esc(n.text) + '</p>' +
+      '<a class="go" href="' + esc(n.href) + '">' + esc(n.cta) + ' <span aria-hidden="true">→</span></a>';
+    if (listEl) [].forEach.call(listEl.querySelectorAll('button'), function (b) {
+      b.setAttribute('aria-current', String(NODES[+b.dataset.i] === n));
+    });
+  }
+  function select(n, turn) {
+    selected = n;
+    if (turn !== false) targetYaw = yaw + wrap(n.a - Math.PI / 2 - yaw);
+    if (filter !== 'all' && filter !== n.ch) setFilter('all');
+    lastTouch = performance.now();
+    render(); kick(); if (reduce) draw();
+  }
+  if (listEl) {
+    listEl.innerHTML = NODES.map(function (n, i) {
+      return '<li><button type="button" data-i="' + i + '"><small>' + esc(n.short) + '</small><span>' + esc(n.title) + '</span></button></li>';
+    }).join('');
+    listEl.addEventListener('click', function (e) {
+      var b = e.target.closest('button'); if (b) select(NODES[+b.dataset.i]);
+    });
+  }
+
+  // 欄目篩選
+  var chips = root.querySelectorAll('.chip');
+  function setFilter(f) {
+    filter = f;
+    [].forEach.call(chips, function (c) { c.setAttribute('aria-pressed', String(c.dataset.ch === f)); });
+    if (f !== 'all') targetYaw = yaw + wrap(CH[f].centre * RAD - Math.PI / 2 - yaw);
+    lastTouch = performance.now(); kick(); if (reduce) draw();
+  }
+  [].forEach.call(chips, function (c) { c.addEventListener('click', function () { setFilter(c.dataset.ch); }); });
+
+  // 指標互動：拖曳旋轉、點選浮標
+  var dragging = false, px = 0, py = 0, moved = 0;
+  function pick(e) {
+    var r = cv.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top, best = null, bd = 1e9;
+    NODES.forEach(function (n) {
+      if (filter !== 'all' && filter !== n.ch) return;
+      var d = Math.hypot(x - n._hx, y - n._hy);
+      if (d < n._hr && d < bd) { bd = d; best = n; }
+    });
+    return best;
+  }
+  cv.addEventListener('pointerdown', function (e) {
+    dragging = true; moved = 0; px = e.clientX; py = e.clientY; targetYaw = null;
+    cv.classList.add('dragging'); try { cv.setPointerCapture(e.pointerId); } catch (_) {}
+    lastTouch = performance.now(); kick();
+  });
+  cv.addEventListener('pointermove', function (e) {
+    if (dragging) {
+      var dx = e.clientX - px, dy = e.clientY - py; px = e.clientX; py = e.clientY;
+      moved += Math.abs(dx) + Math.abs(dy);
+      yaw += dx * 0.008;
+      if (e.pointerType === 'mouse') pitch = Math.max(0.3, Math.min(0.95, pitch + dy * 0.004));
+      lastTouch = performance.now();
+      if (reduce) draw();
+    } else if (e.pointerType === 'mouse') {
+      var h = pick(e);
+      if (h !== hover) { hover = h; cv.classList.toggle('hit', !!h); if (reduce) draw(); }
+    }
+  });
+  function up(e) {
+    if (!dragging) return;
+    dragging = false; cv.classList.remove('dragging');
+    if (e.type === 'pointerup' && moved < 8) { var n = pick(e); if (n) select(n); }
+    lastTouch = performance.now();
+  }
+  cv.addEventListener('pointerup', up);
+  cv.addEventListener('pointercancel', up);
+  cv.addEventListener('pointerleave', function () { if (hover) { hover = null; cv.classList.remove('hit'); if (reduce) draw(); } });
+  cv.addEventListener('keydown', function (e) {
+    var k = e.key;
+    if (k === 'ArrowLeft' || k === 'ArrowRight') {
+      var i = NODES.indexOf(selected) + (k === 'ArrowRight' ? 1 : -1);
+      select(NODES[(i + NODES.length) % NODES.length]); e.preventDefault();
+    } else if (k === 'Enter' && selected) { location.href = selected.href; }
+  });
+  [].forEach.call(root.querySelectorAll('.sea-tools button'), function (b) {
+    b.addEventListener('click', function () {
+      var a = b.dataset.act;
+      if (a === 'in') zoom = Math.min(1.9, zoom * 1.2);
+      else if (a === 'out') zoom = Math.max(0.7, zoom / 1.2);
+      else { zoom = 1; pitch = 0.52; targetYaw = yaw + wrap(0 - yaw); }
+      lastTouch = performance.now(); kick(); if (reduce) draw();
+    });
+  });
+
+  if ('ResizeObserver' in window) new ResizeObserver(resize).observe(cv); else window.addEventListener('resize', resize);
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (es) {
+    visible = es[0].isIntersecting; if (visible) kick();
+  }).observe(cv);
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) kick(); });
+
+  var sum = root.querySelector('.sea-panel summary');
+  if (sum) sum.textContent = '全部浮標清單（' + NODES.length + '）';
+  cv.setAttribute('aria-label', '可旋轉的 3D 海圖：中央是燈塔，周圍 ' + NODES.length + ' 個浮標分屬三個欄目。按左右方向鍵切換浮標，按 Enter 前往內容；旁邊的清單列出全部項目。');
+  render(); resize(); kick();
+})();
