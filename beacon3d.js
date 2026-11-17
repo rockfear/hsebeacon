@@ -9,9 +9,9 @@
   if (!ctx) return;
 
   var CH = {
-    t: { name: '環安衛趨勢', color: '#d9f295', shape: 'cone', centre: 90 },
-    p: { name: '風險管理實戰', color: '#f5b461', shape: 'can', centre: 210 },
-    r: { name: '職場行為科學', color: '#a9dcef', shape: 'ball', centre: 330 }
+    t: { name: '環安衛趨勢', color: '#c9a46a', shape: 'cone', centre: 90 },
+    p: { name: '風險管理實戰', color: '#9fb6c3', shape: 'can', centre: 210 },
+    r: { name: '職場行為科學', color: '#a7b79c', shape: 'ball', centre: 330 }
   };
   var KIND = { official: '官方來源', analysis: '作者分析', open: '待驗證問題' };
 
@@ -96,24 +96,24 @@
 
   function drawSea() {
     var g = ctx.createLinearGradient(0, 0, 0, H);
-    g.addColorStop(0, '#0a231f'); g.addColorStop(1, '#0f302a');
+    g.addColorStop(0, '#131f26'); g.addColorStop(1, '#18262e');
     ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
     // 海面圓盤
     ctx.beginPath();
     for (var i = 0; i <= 72; i++) { var a = i / 72 * TAU, p = proj(Math.cos(a) * R_SEA, 0, Math.sin(a) * R_SEA); if (i) ctx.lineTo(p.x, p.y); else ctx.moveTo(p.x, p.y); }
     var c0 = proj(0, 0, 0);
     var sg = ctx.createRadialGradient(c0.x, c0.y, 0, c0.x, c0.y, R_SEA * c0.s);
-    sg.addColorStop(0, '#1d4d43'); sg.addColorStop(1, '#123631');
+    sg.addColorStop(0, '#263a44'); sg.addColorStop(1, '#1b2a33');
     ctx.fillStyle = sg; ctx.fill();
-    for (var r = 1.5; r < R_SEA; r += 1.5) ring(r, 'rgba(184,235,158,.13)', 1);
-    ring(R_SEA, 'rgba(217,242,149,.55)', 1.5);
+    for (var r = 1.5; r < R_SEA; r += 1.5) ring(r, 'rgba(190,205,214,.13)', 1);
+    ring(R_SEA, 'rgba(201,164,106,.55)', 1.5);
     for (var d = 0; d < 360; d += 10) {
       var major = d % 30 === 0;
-      seg(d * RAD, major ? R_SEA - 0.35 : R_SEA - 0.18, R_SEA, 'rgba(217,242,149,' + (major ? '.6' : '.3') + ')', 1);
+      seg(d * RAD, major ? R_SEA - 0.35 : R_SEA - 0.18, R_SEA, 'rgba(201,164,106,' + (major ? '.6' : '.3') + ')', 1);
     }
     for (d = 0; d < 360; d += 30) seg(d * RAD, 1.5, R_SEA - 0.35, 'rgba(255,255,255,.05)', 1);
     // 扇區分界與名稱
-    [30, 150, 270].forEach(function (b) { seg(b * RAD, 1.2, R_SEA, 'rgba(217,242,149,.32)', 1.2); });
+    [30, 150, 270].forEach(function (b) { seg(b * RAD, 1.2, R_SEA, 'rgba(201,164,106,.32)', 1.2); });
     ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
     Object.keys(CH).forEach(function (k) {
       var a = CH[k].centre * RAD, p = proj(Math.cos(a) * (R_SEA + 0.6), 0, Math.sin(a) * (R_SEA + 0.6));
@@ -132,32 +132,32 @@
     for (var i = 0; i <= 8; i++) { var a = b - half + i / 8 * half * 2; pts.push(proj(Math.cos(a) * R_SEA, 0, Math.sin(a) * R_SEA)); }
     var o = proj(0, 0, 0), tip = proj(Math.cos(b) * R_SEA, 0, Math.sin(b) * R_SEA);
     var g = ctx.createLinearGradient(o.x, o.y, tip.x, tip.y);
-    g.addColorStop(0, 'rgba(217,242,149,.42)'); g.addColorStop(1, 'rgba(217,242,149,.04)');
+    g.addColorStop(0, 'rgba(201,164,106,.42)'); g.addColorStop(1, 'rgba(201,164,106,.04)');
     ctx.beginPath(); ctx.moveTo(o.x, o.y); pts.forEach(function (p) { ctx.lineTo(p.x, p.y); }); ctx.closePath(); ctx.fillStyle = g; ctx.fill();
     var g2 = ctx.createLinearGradient(top.x, top.y, tip.x, tip.y);
-    g2.addColorStop(0, 'rgba(255,255,230,.30)'); g2.addColorStop(1, 'rgba(255,255,230,0)');
+    g2.addColorStop(0, 'rgba(255,243,220,.30)'); g2.addColorStop(1, 'rgba(255,243,220,0)');
     ctx.beginPath(); ctx.moveTo(top.x, top.y); ctx.lineTo(pts[0].x, pts[0].y); ctx.lineTo(pts[8].x, pts[8].y); ctx.closePath(); ctx.fillStyle = g2; ctx.fill();
   }
 
   function drawLighthouse() {
     var p = proj(0, 0, 0), s = p.s, x = p.x, y = p.y;
-    ctx.beginPath(); ctx.ellipse(x, y, 0.95 * s, 0.95 * s * sinP, 0, 0, TAU); ctx.fillStyle = '#31463f'; ctx.fill();
-    ctx.beginPath(); ctx.ellipse(x, y - 0.08 * s, 0.7 * s, 0.7 * s * sinP, 0, 0, TAU); ctx.fillStyle = '#4b6259'; ctx.fill();
+    ctx.beginPath(); ctx.ellipse(x, y, 0.95 * s, 0.95 * s * sinP, 0, 0, TAU); ctx.fillStyle = '#3a4850'; ctx.fill();
+    ctx.beginPath(); ctx.ellipse(x, y - 0.08 * s, 0.7 * s, 0.7 * s * sinP, 0, 0, TAU); ctx.fillStyle = '#55646c'; ctx.fill();
     var hb = 2.6, wb = 0.42, wt = 0.26;
     for (var i = 0; i < 4; i++) {
       var f0 = i / 4, f1 = (i + 1) / 4, w0 = wb + (wt - wb) * f0, w1 = wb + (wt - wb) * f1;
       ctx.beginPath();
       ctx.moveTo(x - w0 * s, y - f0 * hb * s); ctx.lineTo(x + w0 * s, y - f0 * hb * s);
       ctx.lineTo(x + w1 * s, y - f1 * hb * s); ctx.lineTo(x - w1 * s, y - f1 * hb * s); ctx.closePath();
-      ctx.fillStyle = i % 2 ? '#e98935' : '#f3f5ec'; ctx.fill();
+      ctx.fillStyle = i % 2 ? '#b5503a' : '#eef1f2'; ctx.fill();
     }
     ctx.fillStyle = 'rgba(0,0,0,.16)';
     ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + wb * s, y); ctx.lineTo(x + wt * s, y - hb * s); ctx.lineTo(x, y - hb * s); ctx.closePath(); ctx.fill();
-    ctx.fillStyle = '#123631'; ctx.fillRect(x - 0.4 * s, y - (hb + 0.08) * s, 0.8 * s, 0.1 * s);
-    ctx.save(); ctx.shadowColor = '#fffbe0'; ctx.shadowBlur = 0.9 * s;
-    ctx.fillStyle = '#fffbd6'; ctx.fillRect(x - 0.2 * s, y - (hb + 0.52) * s, 0.4 * s, 0.44 * s); ctx.restore();
+    ctx.fillStyle = '#1b2a33'; ctx.fillRect(x - 0.4 * s, y - (hb + 0.08) * s, 0.8 * s, 0.1 * s);
+    ctx.save(); ctx.shadowColor = '#fff1d6'; ctx.shadowBlur = 0.9 * s;
+    ctx.fillStyle = '#fff4dc'; ctx.fillRect(x - 0.2 * s, y - (hb + 0.52) * s, 0.4 * s, 0.44 * s); ctx.restore();
     ctx.beginPath(); ctx.moveTo(x - 0.3 * s, y - (hb + 0.52) * s); ctx.lineTo(x + 0.3 * s, y - (hb + 0.52) * s); ctx.lineTo(x, y - (hb + 0.85) * s); ctx.closePath();
-    ctx.fillStyle = '#123631'; ctx.fill(); ctx.strokeStyle = '#d9f295'; ctx.lineWidth = 1; ctx.stroke();
+    ctx.fillStyle = '#1b2a33'; ctx.fill(); ctx.strokeStyle = '#c9a46a'; ctx.lineWidth = 1; ctx.stroke();
   }
 
   function drawBuoy(n, p, lit) {
@@ -171,12 +171,12 @@
       ctx.beginPath(); ctx.ellipse(p.x, p.y, (0.62 + pulse * 0.12) * s, (0.62 + pulse * 0.12) * s * sinP, 0, 0, TAU);
       ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; ctx.stroke();
     }
-    ctx.beginPath(); ctx.ellipse(p.x, p.y, 0.4 * s, 0.4 * s * sinP, 0, 0, TAU); ctx.fillStyle = 'rgba(5,22,19,.5)'; ctx.fill();
+    ctx.beginPath(); ctx.ellipse(p.x, p.y, 0.4 * s, 0.4 * s * sinP, 0, 0, TAU); ctx.fillStyle = 'rgba(10,18,23,.5)'; ctx.fill();
     ctx.save(); ctx.translate(x, y); ctx.rotate(tilt);
     ctx.beginPath(); ctx.moveTo(-0.3 * s, 0); ctx.lineTo(0.3 * s, 0); ctx.lineTo(0.2 * s, -0.36 * s); ctx.lineTo(-0.2 * s, -0.36 * s); ctx.closePath();
     ctx.fillStyle = c.color; ctx.fill();
     ctx.fillStyle = 'rgba(0,0,0,.22)'; ctx.fillRect(0, -0.36 * s, 0.25 * s, 0.36 * s);
-    ctx.strokeStyle = '#eef3e6'; ctx.lineWidth = Math.max(1.5, 0.05 * s);
+    ctx.strokeStyle = '#e8ecee'; ctx.lineWidth = Math.max(1.5, 0.05 * s);
     ctx.beginPath(); ctx.moveTo(0, -0.36 * s); ctx.lineTo(0, -0.92 * s); ctx.stroke();
     var m = 0.19 * s, ty = -1.0 * s;
     ctx.fillStyle = c.color; ctx.beginPath();
@@ -186,8 +186,8 @@
     ctx.fill();
     var glow = Math.max(lit, isSel || isHov ? 1 : 0);
     if (glow > 0.02 && on) {
-      ctx.shadowColor = '#fffbe0'; ctx.shadowBlur = 14 * glow; ctx.globalAlpha = glow;
-      ctx.fillStyle = '#fffbd6'; ctx.beginPath(); ctx.arc(0, ty - m * 1.7, 2 + 2.5 * glow, 0, TAU); ctx.fill();
+      ctx.shadowColor = '#fff1d6'; ctx.shadowBlur = 14 * glow; ctx.globalAlpha = glow;
+      ctx.fillStyle = '#fff4dc'; ctx.beginPath(); ctx.arc(0, ty - m * 1.7, 2 + 2.5 * glow, 0, TAU); ctx.fill();
       ctx.shadowBlur = 0;
     }
     ctx.restore();
@@ -199,8 +199,8 @@
     ctx.font = (isSel || isHov ? '800 ' : '600 ') + fs + 'px system-ui, "PingFang TC", "Microsoft JhengHei", sans-serif';
     ctx.textAlign = 'center'; ctx.textBaseline = 'top';
     var ly = p.y + 0.4 * s * sinP + 5, tw = ctx.measureText(n.short).width;
-    if (isSel || isHov) { ctx.fillStyle = '#d9f295'; ctx.fillRect(p.x - tw / 2 - 5, ly - 2, tw + 10, fs + 6); ctx.fillStyle = '#123631'; }
-    else { ctx.fillStyle = '#f3f5ec'; }
+    if (isSel || isHov) { ctx.fillStyle = '#c9a46a'; ctx.fillRect(p.x - tw / 2 - 5, ly - 2, tw + 10, fs + 6); ctx.fillStyle = '#1b2a33'; }
+    else { ctx.fillStyle = '#eef1f2'; }
     ctx.fillText(n.short, p.x, ly + 1);
     ctx.globalAlpha = 1;
     n._hx = x; n._hy = y - 0.5 * s; n._hr = Math.max(24, 0.62 * s);
