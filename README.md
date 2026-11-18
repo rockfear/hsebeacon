@@ -1,6 +1,8 @@
 # 環安衛航標 HSE Beacon
 
-靜態網站，正式網域 `hsebeacon.tw`（見 `CNAME`）。目前儲存庫為 Private，尚未開啟 GitHub Pages。
+靜態網站，以 GitHub Pages 公開於 https://rockfear.github.io/hsebeacon/ 。預定正式網域為 `hsebeacon.tw`，尚未設定：頁面中的 canonical、分享圖、`sitemap.xml` 與 `robots.txt` 已先寫成 `https://hsebeacon.tw/`。接上網域時再加回 `CNAME` 檔（內容為 `hsebeacon.tw`）。
+
+推送到 main 的變更會在一兩分鐘內直接上線。
 
 ## 檔案
 
@@ -9,7 +11,7 @@
 - `article-NN.html`：獨立專文（新專文要同步更新首頁「風險管理實戰」卡片、`beacon3d.js` 的專文浮標、相關週報的延伸閱讀連結與 `sitemap.xml`）
 - `beacon3d.js`：首頁 3D 海域與浮標資料（`NODES` 陣列）
 - `style.css`：全站樣式
-- `sitemap.xml`、`robots.txt`、`og.png`、`CNAME`、`.nojekyll`
+- `sitemap.xml`、`robots.txt`、`og.png`、`.nojekyll`
 
 ## 每週新增一期
 
