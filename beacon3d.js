@@ -16,24 +16,24 @@
   var KIND = { official: '官方來源', analysis: '作者分析', open: '待驗證問題' };
 
   var NODES = [
-    { ch: 't', short: '03 期', kind: 'official', title: '第 03 期｜量得到的改善：甲醇濃度、土壤達標與 PFAS 趨勢', meta: '2026.11.16', text: '五地動向、土耳其鋼廠事故追蹤，以及三個各有可查核成果的改善案例。', href: 'issue-03.html', cta: '閱讀第 03 期' },
-    { ch: 't', short: '台灣', kind: 'open', title: '台灣：台東工地灌漿時模板失效', meta: '11/11 報導收錄', text: '九樓灌漿時模板失效、鷹架變形。施工順序、支撐系統與失效原因仍待正式調查。', href: 'issue-03.html#regions', cta: '看第 03 期區域動向' },
-    { ch: 't', short: '美國', kind: 'official', title: '美國：York 土壤達標，Muncie 開始清理含鉛土壤', meta: '11/12 公告', text: 'York 四氯乙烯污染源區有採樣結果。Muncie 已開工，成效待驗證。', href: 'issue-03.html#regions', cta: '看第 03 期區域動向' },
-    { ch: 't', short: '英國', kind: 'official', title: '英國：英格蘭環境署發布 PFAS 評估報告', meta: '11/12 發布', text: '2016–2025 年河川 PFOS 約下降 30%、PFOA 約下降 29%。PFAS 仍廣泛存在。', href: 'issue-03.html#regions', cta: '看第 03 期區域動向' },
-    { ch: 't', short: '日本', kind: 'official', title: '日本：岡山管區死亡勞災速報達近十年最高', meta: '11/12 刊登', text: '死亡數是速報，同步安全巡查已執行。改善成效待追蹤。', href: 'issue-03.html#regions', cta: '看第 03 期區域動向' },
-    { ch: 't', short: '歐洲', kind: 'official', title: '歐洲：比利時離岸風電支持方案獲准，挪威電氣設施稽核待回覆', fig: '20.4 億', figLabel: '歐元，比利時離岸風電支持方案', meta: '11/10 公告', text: '比利時案是政策核准。挪威 Havtil 要求 Aker BP 於 11/13 前回覆，尚未查得結案證據。', href: 'issue-03.html#regions', cta: '看第 03 期區域動向' },
-    { ch: 't', short: '鋼廠', kind: 'open', title: '重大事故追蹤：土耳其 Aliağa 鋼廠天車墜落及爆炸', meta: '11/9 事故 · 調查中', text: '吊運電弧爐爐體時天車走行軌道梁脫離支承，隨後發生爆炸。原因與完整機制仍待正式調查。', href: 'issue-03.html#tracker', cta: '看事故追蹤' },
-    { ch: 't', short: '02 期', kind: 'official', title: '第 02 期｜離岸設施火災調查與海床防沖刷', meta: '2026.11.09', text: '挪威 Visund、英國 Rampion、美國化學品申報與丹麥設備租賃。', href: 'issue-02.html', cta: '閱讀第 02 期' },
-    { ch: 't', short: '01 期', kind: 'official', title: '第 01 期｜從作業暴露到工程改善', meta: '資料截至 2026.11.03', text: '人造石粉塵、變壓器拆解與愛爾蘭酒廠的卸桶改造。', href: 'issue-01.html', cta: '閱讀第 01 期' },
+    { ch: 't', short: '台灣', kind: 'open', title: '台灣：台東工地灌漿時模板失效', meta: '第 03 期 · 11/11 報導收錄', text: '九樓灌漿時模板失效、鷹架變形。施工順序、支撐系統與失效原因仍待正式調查。', href: 'issue-03.html#regions', cta: '看第 03 期區域動向' },
+    { ch: 't', short: '美國', kind: 'official', title: '美國：York 土壤達標，Muncie 開始清理含鉛土壤', meta: '第 03 期 · 11/12 公告', text: 'York 四氯乙烯污染源區有採樣結果。Muncie 已開工，成效待驗證。', href: 'issue-03.html#regions', cta: '看第 03 期區域動向' },
+    { ch: 't', short: '英國', kind: 'official', title: '英國：英格蘭環境署發布 PFAS 評估報告', meta: '第 03 期 · 11/12 發布', text: '2016–2025 年河川 PFOS 約下降 30%、PFOA 約下降 29%。PFAS 仍廣泛存在。', href: 'issue-03.html#regions', cta: '看第 03 期區域動向' },
+    { ch: 't', short: '日本', kind: 'official', title: '日本：岡山管區死亡勞災速報達近十年最高', meta: '第 03 期 · 11/12 刊登', text: '死亡數是速報，同步安全巡查已執行。改善成效待追蹤。', href: 'issue-03.html#regions', cta: '看第 03 期區域動向' },
+    { ch: 't', short: '比利時', kind: 'official', title: '比利時：歐盟核准離岸風電支持方案', fig: '20.4 億', figLabel: '歐元，離岸風電支持方案', meta: '第 03 期 · 11/10 公告', text: '歐盟執委會核准的政策方案，屬政策進展。', href: 'issue-03.html#regions', cta: '看第 03 期區域動向' },
+    { ch: 't', short: '挪威', kind: 'official', title: '挪威：Havtil 要求 Aker BP 回覆老化電氣設施稽核缺失', meta: '第 03 期 · 回覆期限 11/13', text: '9/7–24 運維稽核的缺失處理方式須於 11/13 前回覆，尚未查得結案證據。', href: 'issue-03.html#regions', cta: '看第 03 期區域動向' },
+    { ch: 't', short: '土耳其', kind: 'open', title: '土耳其：Aliağa 鋼廠天車墜落及爆炸', meta: '第 03 期 · 11/9 事故 · 調查中', text: '吊運電弧爐爐體時天車走行軌道梁脫離支承，隨後發生爆炸。原因與完整機制仍待正式調查。', href: 'issue-03.html#tracker', cta: '看事故追蹤' },
 
-    { ch: 'p', short: '專文', kind: 'analysis', title: '提醒了一百次，為什麼事故還是發生？', meta: '專文', text: '從「叫人小心」到「讓系統不容易出錯」。用米德爾頓酒廠卸桶案例，談工程控制與一線參與設計。', href: 'article-01.html', cta: '閱讀全文' },
-    { ch: 'p', short: '甲醇', kind: 'official', title: '甲醇沾塗作業，將排氣設計移到逸散源附近', fig: '<0.888', figLabel: 'ppm，改造後甲醇濃度（原 15.95 ppm）', meta: '台灣 · 第 03 期', text: '後吸槽式氣罩搭配局部圍封。摘要未交代完整採樣條件。', href: 'issue-03.html#case-1', cta: '看案例' },
-    { ch: 'p', short: 'York', kind: 'official', title: 'York 舊乾洗污染場址，用採樣確認整治達標', fig: '約 2 年', figLabel: 'EPA 估計達到源區目標的時間', meta: '美國 · 第 03 期', text: '所有採樣位置與深度均達到 PCE 土壤目標，後續轉向地下水污染羽流。', href: 'issue-03.html#case-2', cta: '看案例' },
-    { ch: 'p', short: 'PFAS', kind: 'official', title: 'PFAS 管理，用多年監測驗證環境變化', fig: '−30%', figLabel: '河川 PFOS，2016–2025 年', meta: '英格蘭 · 第 03 期', text: '個別措施的貢獻比例無法由趨勢數字判定，PFAS 仍廣泛存在。', href: 'issue-03.html#case-3', cta: '看案例' },
-    { ch: 'p', short: '回去量', kind: 'analysis', title: '風機基礎撐過第一個冬天，為什麼還要回去量？', meta: '專文 · 2026.11.18', text: '用 Rampion 礁體方塊試點拆解三條驗證軌道，再談 CAPA 從執行完成、功能有效到持續有效。', href: 'article-02.html', cta: '閱讀全文' },
-    { ch: 'p', short: '47 項', kind: 'official', title: '高露潔棕欖補報進口化學品資料', fig: '47 項', figLabel: '超過申報門檻的化學品', meta: '美國 · 第 02 期', text: '補齊資料是已確認成果，公開資料未提供排放或暴露變化。', href: 'issue-02.html#case-1', cta: '看案例' },
-    { ch: 'p', short: '7.5 萬', kind: 'official', title: 'Rampion 分開驗證防沖刷與生態效益', fig: '7.5 萬', figLabel: '布放的礁體方塊約數', meta: '英國 · 第 02 期', text: '布放結構經第一個冬季仍穩定，生物多樣性效益仍待監測。', href: 'issue-02.html#case-2', cta: '看案例' },
-    { ch: 'p', short: '85%', kind: 'official', title: 'GSV 把事故通報接到處理時限', fig: '逾 85%', figLabel: '案例記載的事故降幅', meta: '丹麥 · 第 02 期', text: '手機通報自動通知安全部門，並要求 36 小時內處理。各項措施的個別貢獻未拆分。', href: 'issue-02.html#case-3', cta: '看案例' },
+    { ch: 'p', short: '控制層級', kind: 'analysis', title: '提醒了一百次，為什麼事故還是發生？', meta: '專文 · 2026.11.03', text: '從「叫人小心」到「讓系統不容易出錯」。用米德爾頓酒廠卸桶案例，談控制層級、工程控制與一線參與設計。', href: 'article-01.html', cta: '閱讀全文' },
+    { ch: 'p', short: '有效性驗證', kind: 'analysis', title: '風機基礎撐過第一個冬天，為什麼還要回去量？', meta: '專文 · 2026.11.18', text: '用 Rampion 礁體方塊試點拆解三條驗證軌道，再談 CAPA 從執行完成、功能有效到持續有效。', href: 'article-02.html', cta: '閱讀全文' },
+    { ch: 'p', short: '局部排氣', kind: 'official', title: '甲醇沾塗作業，將排氣設計移到逸散源附近', fig: '<0.888', figLabel: 'ppm，改造後甲醇濃度（原 15.95 ppm）', meta: '台灣 · 第 03 期', text: '後吸槽式氣罩搭配局部圍封。摘要未交代完整採樣條件。', href: 'issue-03.html#case-1', cta: '看案例' },
+    { ch: 'p', short: '整治達標', kind: 'official', title: 'York 舊乾洗污染場址，用採樣確認整治達標', fig: '約 2 年', figLabel: 'EPA 估計達到源區目標的時間', meta: '美國 · 第 03 期', text: '所有採樣位置與深度均達到 PCE 土壤目標，後續轉向地下水污染羽流。', href: 'issue-03.html#case-2', cta: '看案例' },
+    { ch: 'p', short: '趨勢監測', kind: 'official', title: 'PFAS 管理，用多年監測驗證環境變化', fig: '−30%', figLabel: '河川 PFOS，2016–2025 年', meta: '英格蘭 · 第 03 期', text: '個別措施的貢獻比例無法由趨勢數字判定，PFAS 仍廣泛存在。', href: 'issue-03.html#case-3', cta: '看案例' },
+    { ch: 'p', short: '申報合規', kind: 'official', title: '高露潔棕欖補報進口化學品資料', fig: '47 項', figLabel: '超過申報門檻的化學品', meta: '美國 · 第 02 期', text: '補齊資料是已確認成果，公開資料未提供排放或暴露變化。', href: 'issue-02.html#case-1', cta: '看案例' },
+    { ch: 'p', short: '防沖刷', kind: 'official', title: 'Rampion 分開驗證防沖刷與生態效益', fig: '7.5 萬', figLabel: '布放的礁體方塊約數', meta: '英國 · 第 02 期', text: '布放結構經第一個冬季仍穩定，生物多樣性效益仍待監測。', href: 'issue-02.html#case-2', cta: '看案例' },
+    { ch: 'p', short: '通報時限', kind: 'official', title: 'GSV 把事故通報接到處理時限', fig: '逾 85%', figLabel: '案例記載的事故降幅', meta: '丹麥 · 第 02 期', text: '手機通報自動通知安全部門，並要求 36 小時內處理。各項措施的個別貢獻未拆分。', href: 'issue-02.html#case-3', cta: '看案例' },
+    { ch: 'p', short: '粉塵暴露', kind: 'official', title: '人造石加工粉塵', fig: '305', figLabel: '名勞工接受特殊健康檢查', meta: '台灣 · 第 01 期', text: '訪視 60 家事業單位，發現 4 名疑似工作相關肺部健康異常。實際暴露改善仍需追蹤。', href: 'issue-01.html#case-1', cta: '看案例' },
+    { ch: 'p', short: '安全會議', kind: 'official', title: 'A-Line TDS 的每日安全會議', fig: '2025', figLabel: '取得 SHARP 認可', meta: '美國 · 第 01 期', text: '讓員工在每日安全會議主動提出疑慮，再為重要事項指定負責人與驗證方式。', href: 'issue-01.html#case-2', cta: '看案例' },
 
     { ch: 'r', short: '停工', kind: 'open', title: '時間壓力與停工判斷', meta: '研究議程', text: '工期緊迫或交接資訊不足時，哪些條件會影響工作者暫停作業的決定？', href: '#research', cta: '看研究議程' },
     { ch: 'r', short: '通報', kind: 'open', title: '主管回應與危害通報', meta: '研究議程', text: '主管首次回應的方式，以及後續是否回報處理進度，如何影響員工下次通報的意願？', href: '#research', cta: '看研究議程' },
@@ -42,12 +42,25 @@
 
   var RAD = Math.PI / 180, TAU = Math.PI * 2, R_SEA = 7.4;
   // 依欄目把浮標排進各自的扇區
-  Object.keys(CH).forEach(function (k) {
+  // 扇區寬度依浮標數量分配；環安衛趨勢固定以 90° 為中心，預設朝向觀看者
+  var keys = Object.keys(CH), weight = {}, total = 0;
+  keys.forEach(function (k) {
+    var c = NODES.filter(function (n) { return n.ch === k; }).length;
+    weight[k] = Math.max(c, 5); total += weight[k];
+  });
+  var start = 90 - weight.t / total * 180, bounds = [];
+  keys.forEach(function (k) {
+    var span = weight[k] / total * 360;
+    CH[k].from = start; CH[k].centre = start + span / 2; CH[k].span = span;
+    bounds.push(start); start += span;
+  });
+  keys.forEach(function (k) {
     var list = NODES.filter(function (n) { return n.ch === k; });
+    var half = CH[k].span / 2 - 10;
     list.forEach(function (n, i) {
       var f = (i + 0.5) / list.length * 2 - 1;
-      n.a = (CH[k].centre + f * (list.length < 7 ? 50 : 56)) * RAD;
-      n.r = list.length < 4 ? 4.6 : list.length < 7 ? (i % 2 ? 5.9 : 3.5) : [3.4, 5.9, 4.6][i % 3];
+      n.a = (CH[k].centre + f * half) * RAD;
+      n.r = list.length < 4 ? (i % 2 ? 5.7 : 3.9) : list.length < 7 ? (i % 2 ? 5.9 : 3.5) : [3.3, 6.0, 4.65][i % 3];
       n.x = Math.cos(n.a) * n.r; n.z = Math.sin(n.a) * n.r;
       n.phase = i * 1.7 + CH[k].centre;
     });
@@ -113,14 +126,16 @@
     }
     for (d = 0; d < 360; d += 30) seg(d * RAD, 1.5, R_SEA - 0.35, 'rgba(255,255,255,.05)', 1);
     // 扇區分界與名稱
-    [30, 150, 270].forEach(function (b) { seg(b * RAD, 1.2, R_SEA, 'rgba(201,164,106,.32)', 1.2); });
+    bounds.forEach(function (b) { seg(b * RAD, 1.2, R_SEA, 'rgba(201,164,106,.32)', 1.2); });
     ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
     Object.keys(CH).forEach(function (k) {
       var a = CH[k].centre * RAD, p = proj(Math.cos(a) * (R_SEA + 0.6), 0, Math.sin(a) * (R_SEA + 0.6));
       var front = (p.d / (R_SEA + 0.6) + 1) / 2;
       ctx.globalAlpha = (filter === 'all' || filter === k ? 1 : 0.35) * (0.35 + 0.65 * front);
       ctx.font = '700 ' + Math.round(Math.max(12, Math.min(15, W / 42))) + 'px system-ui, "PingFang TC", "Microsoft JhengHei", sans-serif';
-      ctx.fillStyle = CH[k].color; ctx.fillText(CH[k].name, p.x, p.y);
+      ctx.fillStyle = CH[k].color;
+      var tw = ctx.measureText(CH[k].name).width / 2 + 6;
+      ctx.fillText(CH[k].name, Math.min(Math.max(p.x, tw), W - tw), p.y);
     });
     ctx.globalAlpha = 1;
   }
@@ -193,7 +208,7 @@
     ctx.restore();
     // 標籤：近處常亮，遠處在光束掃過時浮現
     var front = (p.d / 6 + 1) / 2;
-    var la = on ? Math.max(isSel || isHov ? 1 : 0, 0.3 + 0.55 * front, lit) : 0.15;
+    var la = on ? Math.max(isSel || isHov ? 1 : 0, 0.06 + 0.94 * Math.pow(front, 1.6), lit) : 0.12;
     ctx.globalAlpha = Math.min(1, la);
     var fs = Math.round(Math.max(11, Math.min(14, s * 0.42)));
     ctx.font = (isSel || isHov ? '800 ' : '600 ') + fs + 'px system-ui, "PingFang TC", "Microsoft JhengHei", sans-serif';

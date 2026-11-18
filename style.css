@@ -120,7 +120,7 @@ img,canvas{max-width:100%}
 .sea-list{list-style:none;margin:.5rem 0 0;padding:0;display:grid;gap:.15rem;max-height:14rem;overflow:auto}
 .sea-list button{width:100%;text-align:start;background:none;border:0;color:inherit;font:inherit;font-size:.88rem;padding:.3rem .25rem;cursor:pointer;display:flex;gap:.5rem}
 .sea-list button:hover,.sea-list button[aria-current="true"]{background:var(--band);color:var(--accent)}
-.sea-list small{color:var(--band-muted);flex:none;width:3.2em}
+.sea-list small{color:var(--band-muted);flex:none;width:5.2em}
 
 /* 首頁區塊 */
 .shelf{padding:clamp(2.25rem,6vw,4rem) 0;border-bottom:1px solid var(--line)}
