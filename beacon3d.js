@@ -30,7 +30,7 @@
     { ch: 'p', short: '甲醇', kind: 'official', title: '甲醇沾塗作業，將排氣設計移到逸散源附近', fig: '<0.888', figLabel: 'ppm，改造後甲醇濃度（原 15.95 ppm）', meta: '台灣 · 第 03 期', text: '後吸槽式氣罩搭配局部圍封。摘要未交代完整採樣條件。', href: 'issue-03.html#case-1', cta: '看案例' },
     { ch: 'p', short: 'York', kind: 'official', title: 'York 舊乾洗污染場址，用採樣確認整治達標', fig: '約 2 年', figLabel: 'EPA 估計達到源區目標的時間', meta: '美國 · 第 03 期', text: '所有採樣位置與深度均達到 PCE 土壤目標，後續轉向地下水污染羽流。', href: 'issue-03.html#case-2', cta: '看案例' },
     { ch: 'p', short: 'PFAS', kind: 'official', title: 'PFAS 管理，用多年監測驗證環境變化', fig: '−30%', figLabel: '河川 PFOS，2016–2025 年', meta: '英格蘭 · 第 03 期', text: '個別措施的貢獻比例無法由趨勢數字判定，PFAS 仍廣泛存在。', href: 'issue-03.html#case-3', cta: '看案例' },
-    { ch: 'p', short: '驗證', kind: 'analysis', title: '改善完成後，如何驗證成效？', meta: '現場應用', text: '核准方案前先訂好驗證指標、比較基準、重測時點與負責人。', href: 'issue-02.html#practice', cta: '看第 02 期現場應用' },
+    { ch: 'p', short: '回去量', kind: 'analysis', title: '風機基礎撐過第一個冬天，為什麼還要回去量？', meta: '專文 · 2026.11.18', text: '用 Rampion 礁體方塊試點拆解三條驗證軌道，再談 CAPA 從執行完成、功能有效到持續有效。', href: 'article-02.html', cta: '閱讀全文' },
     { ch: 'p', short: '47 項', kind: 'official', title: '高露潔棕欖補報進口化學品資料', fig: '47 項', figLabel: '超過申報門檻的化學品', meta: '美國 · 第 02 期', text: '補齊資料是已確認成果，公開資料未提供排放或暴露變化。', href: 'issue-02.html#case-1', cta: '看案例' },
     { ch: 'p', short: '7.5 萬', kind: 'official', title: 'Rampion 分開驗證防沖刷與生態效益', fig: '7.5 萬', figLabel: '布放的礁體方塊約數', meta: '英國 · 第 02 期', text: '布放結構經第一個冬季仍穩定，生物多樣性效益仍待監測。', href: 'issue-02.html#case-2', cta: '看案例' },
     { ch: 'p', short: '85%', kind: 'official', title: 'GSV 把事故通報接到處理時限', fig: '逾 85%', figLabel: '案例記載的事故降幅', meta: '丹麥 · 第 02 期', text: '手機通報自動通知安全部門，並要求 36 小時內處理。各項措施的個別貢獻未拆分。', href: 'issue-02.html#case-3', cta: '看案例' },

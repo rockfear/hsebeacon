@@ -206,6 +206,22 @@ img,canvas{max-width:100%}
 .tracker .case-links{margin-top:.5rem}
 .case-body p b{font-weight:800}
 
+/* 專文：小標、條列、驗證軌道表 */
+.article h3{font-size:1.12rem;margin:1.75rem 0 .5rem}
+.article .list{margin:0 0 1.15em;padding-inline-start:1.3em}
+.article .list li{margin-bottom:.35em}
+.article .list li::marker{color:var(--tag)}
+.sources h3{font-size:1rem;margin:1.25rem 0 .25rem}
+.tracks{margin:1.5rem 0;border:1px solid var(--line);font-size:.93rem;line-height:1.55;background:var(--card)}
+.tracks>div{display:grid;grid-template-columns:8.5rem 1fr 1.3fr;gap:.5rem 1rem;padding:.75rem 1rem;border-top:1px solid var(--line)}
+.tracks>div:first-child{border-top:0}
+.tracks-head{background:var(--tint);font-size:.8rem;font-weight:700;color:var(--muted)}
+.tracks .st{display:block;font-style:normal;font-weight:800;font-size:.8rem;letter-spacing:.04em;margin-bottom:.15rem}
+.st.ok{color:var(--tag)}.st.wait{color:#8f5a24}.st.limit{color:var(--muted)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .st.wait{color:var(--amber)}}
+:root[data-theme="dark"] .st.wait{color:var(--amber)}
+@media (max-width:700px){.tracks>div{grid-template-columns:1fr;gap:.15rem}.tracks-head{display:none!important}}
+
 .site-foot{border-top:1px solid var(--line);font-size:.9rem;margin-top:clamp(2rem,5vw,3.5rem)}
 .shelf:last-child{border-bottom:0}
 main:has(.shelf:last-child)+.site-foot{margin-top:0}

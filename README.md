@@ -6,7 +6,7 @@
 
 - `index.html`：首頁（刊頭、3D 航標海域、各欄目、關於本站）
 - `issue-NN.html`：各期週報
-- `article-NN.html`：獨立專文
+- `article-NN.html`：獨立專文（新專文要同步更新首頁「風險管理實戰」卡片、`beacon3d.js` 的專文浮標、相關週報的延伸閱讀連結與 `sitemap.xml`）
 - `beacon3d.js`：首頁 3D 海域與浮標資料（`NODES` 陣列）
 - `style.css`：全站樣式
 - `sitemap.xml`、`robots.txt`、`og.png`、`CNAME`、`.nojekyll`
