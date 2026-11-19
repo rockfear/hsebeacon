@@ -223,9 +223,10 @@ img,canvas{max-width:100%}
 :root[data-theme="dark"] .st.wait{color:var(--amber)}
 @media (max-width:700px){.tracks>div{grid-template-columns:1fr;gap:.15rem}.tracks-head{display:none!important}}
 
-.support-link{color:var(--tag);font-weight:700}
-.support-box{margin-top:1.25rem;padding:.9rem 1rem;border:1px solid var(--line);background:var(--card);font-size:.95rem}
-.support-box a{color:var(--tag);font-weight:700}
+.support-link{margin-inline-start:auto;color:var(--muted);font-size:.85rem;text-decoration:none}
+.support-link:hover{text-decoration:underline}
+.aside{color:var(--muted);font-size:.9rem}
+.aside a{color:inherit}
 .site-foot{border-top:1px solid var(--line);font-size:.9rem;margin-top:clamp(2rem,5vw,3.5rem)}
 .shelf:last-child{border-bottom:0}
 main:has(.shelf:last-child)+.site-foot{margin-top:0}
