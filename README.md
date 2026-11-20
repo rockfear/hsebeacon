@@ -1,6 +1,8 @@
 # 環安衛航標 HSE Beacon
 
-靜態網站，以 GitHub Pages 公開於 https://rockfear.github.io/hsebeacon/ 。預定正式網域為 `hsebeacon.tw`，尚未設定：頁面中的 canonical、分享圖、`sitemap.xml` 與 `robots.txt` 已先寫成 `https://hsebeacon.tw/`。接上網域時再加回 `CNAME` 檔（內容為 `hsebeacon.tw`）。
+靜態網站，以 GitHub Pages 公開於 https://rockfear.github.io/hsebeacon/ 。頁面中的 canonical、og:url、og:image、JSON-LD、`sitemap.xml` 與 `robots.txt` 都寫成這個網址。
+
+預定正式網域為 `hsebeacon.tw`，尚未設定。接上網域時：加回 `CNAME`（內容為 `hsebeacon.tw`），把上述網址全部改成 `https://hsebeacon.tw/`，並更新 Portaly 贊助頁感謝文字裡的連結。
 
 推送到 main 的變更會在一兩分鐘內直接上線。
 

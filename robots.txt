@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hsebeacon.tw/sitemap.xml
+Sitemap: https://rockfear.github.io/hsebeacon/sitemap.xml
