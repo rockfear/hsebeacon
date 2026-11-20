@@ -34,4 +34,4 @@
 
 ## 分享列
 
-每期週報（在 `</main>` 前）與每篇專文（在延伸閱讀 `nav.next` 前）結尾都有 `<section class="share">` 分享列，並在 `</body>` 前載入 `share.js`。新增期數或專文時沿用範本即可，分享網址由 `share.js` 依當前頁面自動產生。
+每期週報（在 `</main>` 前）與每篇專文（在延伸閱讀 `nav.next` 前）結尾都有 `<section class="share">` 分享列，並在 `</body>` 前載入 `share.js`。新增期數或專文時沿用範本即可，分享網址由 `share.js` 依當前頁面自動產生。按鈕圖示放在 `assets/`，取自 Facebook、LINE、Instagram 官方品牌素材的單色版，以 CSS 遮罩套用網站顏色。
