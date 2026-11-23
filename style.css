@@ -122,6 +122,7 @@ img,canvas{max-width:100%}
 .sea-list button{width:100%;text-align:start;background:none;border:0;color:inherit;font:inherit;font-size:.88rem;padding:.3rem .25rem;cursor:pointer;display:flex;gap:.5rem}
 .sea-list button:hover,.sea-list button[aria-current="true"]{background:var(--band);color:var(--accent)}
 .sea-list small{color:var(--band-muted);flex:none;width:5.2em}
+:lang(en) .sea-list small{width:7.4em}
 
 /* 首頁區塊 */
 .shelf{padding:clamp(2.25rem,6vw,4rem) 0;border-bottom:1px solid var(--line)}
@@ -284,3 +285,9 @@ main:has(.shelf:last-child)+.site-foot{margin-top:0}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 @media print{.site-head,.sea,.skip,.site-foot{display:none}body{background:#fff;color:#000}}
+/* 英文版：控制層級的標籤較長，加寬欄位並允許換行 */
+:lang(en) .ladder li{grid-template-columns:11.5rem 1fr}
+@media (max-width:700px){:lang(en) .ladder li{grid-template-columns:1fr}}
+:lang(en) .ladder b{white-space:normal}
+:lang(en) .article h2{text-wrap:wrap}
+.translated a{white-space:nowrap}
