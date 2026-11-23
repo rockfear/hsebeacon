@@ -16,24 +16,23 @@
   var KIND = { official: '官方來源', analysis: '作者分析', open: '待驗證問題' };
 
   var NODES = [
-    { ch: 't', short: '台灣', kind: 'open', title: '台灣：台東工地灌漿時模板失效', meta: '第 03 期 · 11/11 報導收錄', text: '九樓灌漿時模板失效、鷹架變形。施工順序、支撐系統與失效原因仍待正式調查。', href: 'issue-03.html#regions', cta: '看第 03 期區域動向' },
-    { ch: 't', short: '美國', kind: 'official', title: '美國：York 土壤達標，Muncie 開始清理含鉛土壤', meta: '第 03 期 · 11/12 公告', text: 'York 四氯乙烯污染源區有採樣結果。Muncie 已開工，成效待驗證。', href: 'issue-03.html#regions', cta: '看第 03 期區域動向' },
-    { ch: 't', short: '英國', kind: 'official', title: '英國：英格蘭環境署發布 PFAS 評估報告', meta: '第 03 期 · 11/12 發布', text: '2016–2025 年河川 PFOS 約下降 30%、PFOA 約下降 29%。PFAS 仍廣泛存在。', href: 'issue-03.html#regions', cta: '看第 03 期區域動向' },
-    { ch: 't', short: '日本', kind: 'official', title: '日本：岡山管區死亡勞災速報達近十年最高', meta: '第 03 期 · 11/12 刊登', text: '死亡數是速報，同步安全巡查已執行。改善成效待追蹤。', href: 'issue-03.html#regions', cta: '看第 03 期區域動向' },
-    { ch: 't', short: '比利時', kind: 'official', title: '比利時：歐盟核准離岸風電支持方案', fig: '20.4 億', figLabel: '歐元，離岸風電支持方案', meta: '第 03 期 · 11/10 公告', text: '歐盟執委會核准的政策方案，屬政策進展。', href: 'issue-03.html#regions', cta: '看第 03 期區域動向' },
-    { ch: 't', short: '挪威', kind: 'official', title: '挪威：Havtil 要求 Aker BP 回覆老化電氣設施稽核缺失', meta: '第 03 期 · 回覆期限 11/13', text: '9/7–24 運維稽核的缺失處理方式須於 11/13 前回覆，尚未查得結案證據。', href: 'issue-03.html#regions', cta: '看第 03 期區域動向' },
-    { ch: 't', short: '土耳其', kind: 'open', title: '土耳其：Aliağa 鋼廠天車墜落及爆炸', meta: '第 03 期 · 11/9 事故 · 調查中', text: '吊運電弧爐爐體時天車走行軌道梁脫離支承，隨後發生爆炸。原因與完整機制仍待正式調查。', href: 'issue-03.html#tracker', cta: '看事故追蹤' },
+    { ch: 't', short: '台灣', kind: 'official', title: '台灣：增列結晶型游離二氧化矽濃度監測', meta: '第 04 期 · 11/20 公告', text: '職安署公告指定業別及特定粉塵場所增列監測，與監測對象、採樣數量及頻率實施方式，2027/1/1 生效。企業暴露改善成效仍待監測。', href: 'issue-04.html#regions', cta: '看第 04 期區域動向' },
+    { ch: 't', short: '美國', kind: 'official', title: '美國：CSB 公布遠端隔離安全影片', meta: '第 04 期 · 11/12 公布', text: '以 2019 年 ITC、PES、TPC 三案說明手動或現地閥在火災時難以安全接近。超出七天窗口，列為製程安全背景。', href: 'issue-04.html#regions', cta: '看第 04 期區域動向' },
+    { ch: 't', short: '英國', kind: 'official', title: '英國：HSE 發布 2025/26 年度職業健康與安全統計', fig: '89.1 萬', figLabel: '名工作者有工作相關壓力、憂鬱或焦慮', meta: '第 04 期 · 11/19 發布', text: '造成 1,820 萬工作日損失。整體職業健康風險及相關工日損失比率近四年大致持平。', href: 'issue-04.html#regions', cta: '看第 04 期區域動向' },
+    { ch: 't', short: '日本', kind: 'official', title: '日本：東京勞動局更新建設業安全衛生對策', meta: '第 04 期 · 11/20 更新', text: '因死亡災害增加而提出防災要求。此為主管機關行動公告，尚無介入後事故下降的證據。', href: 'issue-04.html#regions', cta: '看第 04 期區域動向' },
+    { ch: 't', short: '挪威', kind: 'official', title: '挪威：Havtil 稽核 ConocoPhillips 承重結構運行監測', meta: '第 04 期 · 11/20 公布 · 回覆期限 12/11', text: '確認一項缺失，涉及可能遭來訪船舶撞擊的橋樑之設計載荷及抗撞能力。修復及驗證仍待後續資料。', href: 'issue-04.html#regions', cta: '看第 04 期區域動向' },
 
     { ch: 'p', short: '控制層級', kind: 'analysis', title: '提醒了一百次，為什麼事故還是發生？', meta: '專文 · 2026.11.03', text: '從「叫人小心」到「讓系統不容易出錯」。用米德爾頓酒廠卸桶案例，談控制層級、工程控制與一線參與設計。', href: 'article-01.html', cta: '閱讀全文' },
     { ch: 'p', short: '有效性驗證', kind: 'analysis', title: '風機基礎撐過第一個冬天，為什麼還要回去量？', meta: '專文 · 2026.11.18', text: '用 Rampion 礁體方塊試點拆解三條驗證軌道，再談 CAPA 從執行完成、功能有效到持續有效。', href: 'article-02.html', cta: '閱讀全文' },
+    { ch: 'p', short: '外部諮詢', kind: 'official', title: 'RMP 金屬加工，用外部諮詢維持管理制度', fig: '2025', figLabel: '再獲 SHARP 認可', meta: '美國 · 第 04 期', text: '自 2013 年與 TOSHA 現場諮詢合作，2024 年無可記錄職業傷病案例。公開資料未提供各措施成效。', href: 'issue-04.html#case-1', cta: '看案例' },
+    { ch: 'p', short: '保密訪談', kind: 'official', title: 'Singer Instruments，把壓力訊號轉成職務與人力調整', fig: '2 人', figLabel: '因工作壓力請病假的員工，均成功復工', meta: '英國 · 第 04 期', text: '以保密訪談釐清工作量疑慮，再增加人力及推行跨職務訓練，數週後回訪。來源沒有量化病假降幅。', href: 'issue-04.html#case-2', cta: '看案例' },
+    { ch: 'p', short: '自動化搬運', kind: 'official', title: 'Dinamica Generale，以自動化減少重複搬運', fig: '約 6 萬件', figLabel: '每年移除的人工搬運，單件 5–30 公斤', meta: '義大利 · 第 04 期', text: '協作機器人、自動清洗系統與電子控制搬運輔具，總投資約 34.4 萬歐元。無完整前後事故率資料。', href: 'issue-04.html#case-3', cta: '看案例' },
     { ch: 'p', short: '局部排氣', kind: 'official', title: '甲醇沾塗作業，將排氣設計移到逸散源附近', fig: '<0.888', figLabel: 'ppm，改造後甲醇濃度（原 15.95 ppm）', meta: '台灣 · 第 03 期', text: '後吸槽式氣罩搭配局部圍封。摘要未交代完整採樣條件。', href: 'issue-03.html#case-1', cta: '看案例' },
     { ch: 'p', short: '整治達標', kind: 'official', title: 'York 舊乾洗污染場址，用採樣確認整治達標', fig: '約 2 年', figLabel: 'EPA 估計達到源區目標的時間', meta: '美國 · 第 03 期', text: '所有採樣位置與深度均達到 PCE 土壤目標，後續轉向地下水污染羽流。', href: 'issue-03.html#case-2', cta: '看案例' },
     { ch: 'p', short: '趨勢監測', kind: 'official', title: 'PFAS 管理，用多年監測驗證環境變化', fig: '−30%', figLabel: '河川 PFOS，2016–2025 年', meta: '英格蘭 · 第 03 期', text: '個別措施的貢獻比例無法由趨勢數字判定，PFAS 仍廣泛存在。', href: 'issue-03.html#case-3', cta: '看案例' },
     { ch: 'p', short: '申報合規', kind: 'official', title: '高露潔棕欖補報進口化學品資料', fig: '47 項', figLabel: '超過申報門檻的化學品', meta: '美國 · 第 02 期', text: '補齊資料是已確認成果，公開資料未提供排放或暴露變化。', href: 'issue-02.html#case-1', cta: '看案例' },
     { ch: 'p', short: '防沖刷', kind: 'official', title: 'Rampion 分開驗證防沖刷與生態效益', fig: '7.5 萬', figLabel: '布放的礁體方塊約數', meta: '英國 · 第 02 期', text: '布放結構經第一個冬季仍穩定，生物多樣性效益仍待監測。', href: 'issue-02.html#case-2', cta: '看案例' },
     { ch: 'p', short: '通報時限', kind: 'official', title: 'GSV 把事故通報接到處理時限', fig: '逾 85%', figLabel: '案例記載的事故降幅', meta: '丹麥 · 第 02 期', text: '手機通報自動通知安全部門，並要求 36 小時內處理。各項措施的個別貢獻未拆分。', href: 'issue-02.html#case-3', cta: '看案例' },
-    { ch: 'p', short: '粉塵暴露', kind: 'official', title: '人造石加工粉塵', fig: '305', figLabel: '名勞工接受特殊健康檢查', meta: '台灣 · 第 01 期', text: '訪視 60 家事業單位，發現 4 名疑似工作相關肺部健康異常。實際暴露改善仍需追蹤。', href: 'issue-01.html#case-1', cta: '看案例' },
-    { ch: 'p', short: '安全會議', kind: 'official', title: 'A-Line TDS 的每日安全會議', fig: '2025', figLabel: '取得 SHARP 認可', meta: '美國 · 第 01 期', text: '讓員工在每日安全會議主動提出疑慮，再為重要事項指定負責人與驗證方式。', href: 'issue-01.html#case-2', cta: '看案例' },
 
     { ch: 'r', short: '停工', kind: 'open', title: '時間壓力與停工判斷', meta: '研究議程', text: '工期緊迫或交接資訊不足時，哪些條件會影響工作者暫停作業的決定？', href: '#research', cta: '看研究議程' },
     { ch: 'r', short: '通報', kind: 'open', title: '主管回應與危害通報', meta: '研究議程', text: '主管首次回應的方式，以及後續是否回報處理進度，如何影響員工下次通報的意願？', href: '#research', cta: '看研究議程' },
