@@ -35,3 +35,7 @@
 ## 分享列
 
 每期週報（在 `</main>` 前）與每篇專文（在延伸閱讀 `nav.next` 前）結尾都有 `<section class="share">` 分享列，並在 `</body>` 前載入 `share.js`。新增期數或專文時沿用範本即可，分享網址由 `share.js` 依當前頁面自動產生。按鈕圖示放在 `assets/`，取自 Facebook、LINE、Instagram 官方品牌素材的單色版，以 CSS 遮罩套用網站顏色。
+
+## 動態圖示
+
+首頁各區標題、最新週報標籤與分享列使用 Ultra Lab Motion Icons v0.3.1（MIT 授權，著作權 Ultra Lab，授權全文見 `vendor/ultralab-icons-LICENSE.txt`）。樣式在 `vendor/ul-icons.css`，每頁 `<head>` 都要載入；圖示以不含 `<style>` 的精簡 SVG 直接寫在 HTML 中。電腦上滑鼠移到該區才會播放，手機上慢速自動播放，系統開啟「減少動態效果」時保持靜止。

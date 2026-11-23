@@ -242,6 +242,17 @@ img,canvas{max-width:100%}
 .article .share{margin-top:2.5rem}
 @media print{.share{display:none}}
 
+/* 動態圖示（Ultra Lab Motion Icons，MIT，見 vendor/ultralab-icons-LICENSE.txt） */
+.h-ico{--ul-size:.85em;color:var(--tag);margin-inline-end:.45em;vertical-align:-.08em}
+.label-ico{--ul-size:1.25em;margin-inline-end:.35em;vertical-align:-.25em}
+.band .h-ico,.band .label-ico{color:var(--accent)}
+.share-label{display:inline-flex;align-items:center}
+@media (hover:hover){
+  .ul-i{--ul-play:paused}
+  .shelf:hover .ul-i,.sea-head:hover .ul-i,.lead-story:hover .ul-i,.share:hover .ul-i{--ul-play:running}
+}
+@media (hover:none){.ul-i{--ul-speed:.7}}
+
 .site-foot{border-top:1px solid var(--line);font-size:.9rem;margin-top:clamp(2rem,5vw,3.5rem)}
 .shelf:last-child{border-bottom:0}
 main:has(.shelf:last-child)+.site-foot{margin-top:0}
