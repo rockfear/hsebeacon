@@ -253,6 +253,10 @@ img,canvas{max-width:100%}
 }
 @media (hover:none){.ul-i{--ul-speed:.7}}
 
+/* 語言切換 */
+.lang-switch{border:1px solid var(--line);padding:.2rem .6rem!important;font-size:.8rem;font-weight:700;letter-spacing:.04em;color:var(--muted)}
+.lang-switch:hover{border-color:var(--tag);color:var(--tag);text-decoration:none!important}
+.translated{font-size:.88rem;margin-top:.75rem}
 .site-foot{border-top:1px solid var(--line);font-size:.9rem;margin-top:clamp(2rem,5vw,3.5rem)}
 .shelf:last-child{border-bottom:0}
 main:has(.shelf:last-child)+.site-foot{margin-top:0}

@@ -7,6 +7,10 @@
   var url = location.href.split('#')[0];
   var title = (document.querySelector('meta[property="og:title"]') || {}).content || document.title;
   var enc = encodeURIComponent;
+  var EN = (document.documentElement.lang || '').indexOf('en') === 0;
+  var TXT = EN
+    ? { copied: 'Link copied', ig: 'Link copied. Paste it into an Instagram post or story', manual: 'Please copy the link from the address bar' }
+    : { copied: '已複製連結', ig: '已複製連結，可貼到 IG 貼文或限時動態', manual: '請手動複製網址列的連結' };
   var targets = {
     facebook: 'https://www.facebook.com/sharer/sharer.php?u=' + enc(url),
     line: 'https://social-plugins.line.me/lineit/share?url=' + enc(url) + '&text=' + enc(title)
@@ -28,7 +32,7 @@
       var t = document.createElement('textarea');
       t.value = url; t.setAttribute('readonly', ''); t.style.position = 'fixed'; t.style.opacity = '0';
       document.body.appendChild(t); t.select();
-      try { document.execCommand('copy'); done(); } catch (e) { say(bar, '請手動複製網址列的連結'); }
+      try { document.execCommand('copy'); done(); } catch (e) { say(bar, TXT.manual); }
       document.body.removeChild(t);
     }
   }
@@ -44,9 +48,9 @@
         if (kind === 'instagram' && navigator.share) {
           navigator.share({ title: title, url: url }).catch(function () {});
         } else if (kind === 'instagram') {
-          copy(bar, '已複製連結，可貼到 IG 貼文或限時動態');
+          copy(bar, TXT.ig);
         } else {
-          copy(bar, '已複製連結');
+          copy(bar, TXT.copied);
         }
       });
     });

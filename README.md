@@ -39,3 +39,13 @@
 ## 動態圖示
 
 首頁各區標題、最新週報標籤與分享列使用 Ultra Lab Motion Icons v0.3.1（MIT 授權，著作權 Ultra Lab，授權全文見 `vendor/ultralab-icons-LICENSE.txt`）。樣式在 `vendor/ul-icons.css`，每頁 `<head>` 都要載入；圖示以不含 `<style>` 的精簡 SVG 直接寫在 HTML 中。電腦上滑鼠移到該區才會播放，手機上慢速自動播放，系統開啟「減少動態效果」時保持靜止。
+
+## 英文版
+
+`en/` 資料夾放全站英文版，檔名與中文版一一對應（`en/index.html`、`en/issue-NN.html`、`en/article-NN.html`），共用上層的 `style.css`、`vendor/`、`assets/`、`share.js`、`beacon3d.js`（路徑寫成 `../`）。
+
+- 每頁 `<head>` 都有三條 `<link rel="alternate" hreflang>`（zh-Hant-TW、en、x-default），頁首導覽最後一個連結是語言切換：中文頁 `EN` 指向 `en/同檔名`，英文頁 `中文` 指向 `../同檔名`。
+- 英文頁 `<html lang="en">`，canonical 與 og:url 指向 `https://rockfear.github.io/hsebeacon/en/…`。品牌顯示為「HSE Beacon」，旁邊以 `lang="zh-Hant-TW"` 保留「環安衛航標」。
+- 3D 海域英文文字在 `en/beacon-en.js`（`window.BEACON_I18N`）：欄目名稱、來源標籤與浮標資料，順序、欄目與連結要和 `beacon3d.js` 的 `NODES` 一致；趨勢浮標標英文國名，實戰浮標標英文關鍵字（一兩個字）。
+- 翻譯原則：週報忠於原文、用平實英文；作者專文採意譯並保留語氣，頁首註明譯自中文原文並連回中文版。
+- 新增一期時：同時建立 `en/issue-NN.html`、更新 `en/index.html`（最新週報、期數清單、海域面板預設內容）、`en/beacon-en.js`、上一期英文頁的導覽與頁尾，以及 `sitemap.xml` 的英文網址。

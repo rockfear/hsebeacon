@@ -39,6 +39,14 @@
     { ch: 'r', short: '設計', kind: 'open', title: '工作設計與控制措施', meta: '研究議程', text: '表單、工具與設備如何影響安全步驟的執行？哪些步驟最常卡住或被跳過？', href: '#research', cta: '看研究議程' }
   ];
 
+  // 英文版：en/beacon-en.js 會先定義 window.BEACON_I18N，覆蓋欄目名稱、來源標籤與浮標資料
+  var L = window.BEACON_I18N || null;
+  if (L) {
+    if (L.ch) Object.keys(L.ch).forEach(function (k) { if (CH[k]) CH[k].name = L.ch[k]; });
+    if (L.kind) KIND = L.kind;
+    if (L.nodes) NODES = L.nodes;
+  }
+
   var RAD = Math.PI / 180, TAU = Math.PI * 2, R_SEA = 7.4;
   // 依欄目把浮標排進各自的扇區
   // 扇區寬度依浮標數量分配；環安衛趨勢固定以 90° 為中心，預設朝向觀看者
@@ -131,7 +139,7 @@
       var a = CH[k].centre * RAD, p = proj(Math.cos(a) * (R_SEA + 0.6), 0, Math.sin(a) * (R_SEA + 0.6));
       var front = (p.d / (R_SEA + 0.6) + 1) / 2;
       ctx.globalAlpha = (filter === 'all' || filter === k ? 1 : 0.35) * (0.35 + 0.65 * front);
-      ctx.font = '700 ' + Math.round(Math.max(12, Math.min(15, W / 42))) + 'px system-ui, "PingFang TC", "Microsoft JhengHei", sans-serif';
+      ctx.font = '700 ' + Math.round(Math.max(12, Math.min(15, W / 42))) + 'px system-ui, -apple-system, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif';
       ctx.fillStyle = CH[k].color;
       var tw = ctx.measureText(CH[k].name).width / 2 + 6;
       ctx.fillText(CH[k].name, Math.min(Math.max(p.x, tw), W - tw), p.y);
@@ -210,7 +218,7 @@
     var la = on ? Math.max(isSel || isHov ? 1 : 0, 0.06 + 0.94 * Math.pow(front, 1.6), lit) : 0.12;
     ctx.globalAlpha = Math.min(1, la);
     var fs = Math.round(Math.max(11, Math.min(14, s * 0.42)));
-    ctx.font = (isSel || isHov ? '800 ' : '600 ') + fs + 'px system-ui, "PingFang TC", "Microsoft JhengHei", sans-serif';
+    ctx.font = (isSel || isHov ? '800 ' : '600 ') + fs + 'px system-ui, -apple-system, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif';
     ctx.textAlign = 'center'; ctx.textBaseline = 'top';
     var ly = p.y + 0.4 * s * sinP + 5, tw = ctx.measureText(n.short).width;
     if (isSel || isHov) { ctx.fillStyle = '#c9a46a'; ctx.fillRect(p.x - tw / 2 - 5, ly - 2, tw + 10, fs + 6); ctx.fillStyle = '#1b2a33'; }
@@ -238,7 +246,7 @@
     });
     if (hud) {
       var brg = Math.round(((yaw / RAD) % 360 + 360) % 360);
-      hud.textContent = '燈質 Fl W 12s　方位 ' + ('00' + brg).slice(-3) + '°';
+      hud.textContent = (L && L.hud ? L.hud : '燈質 Fl W 12s　方位 ') + ('00' + brg).slice(-3) + '°';
     }
   }
 
@@ -361,7 +369,7 @@
   document.addEventListener('visibilitychange', function () { if (!document.hidden) kick(); });
 
   var sum = root.querySelector('.sea-panel summary');
-  if (sum) sum.textContent = '全部浮標清單（' + NODES.length + '）';
-  cv.setAttribute('aria-label', '可旋轉的 3D 海圖：中央是燈塔，周圍 ' + NODES.length + ' 個浮標分屬三個欄目。按左右方向鍵切換浮標，按 Enter 前往內容；旁邊的清單列出全部項目。');
+  if (sum) sum.textContent = L && L.list ? L.list(NODES.length) : '全部浮標清單（' + NODES.length + '）';
+  cv.setAttribute('aria-label', L && L.aria ? L.aria(NODES.length) : '可旋轉的 3D 海圖：中央是燈塔，周圍 ' + NODES.length + ' 個浮標分屬三個欄目。按左右方向鍵切換浮標，按 Enter 前往內容；旁邊的清單列出全部項目。');
   render(); resize(); kick();
 })();
