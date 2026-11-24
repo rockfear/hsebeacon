@@ -24,6 +24,7 @@
 
     { ch: 'p', short: '控制層級', kind: 'analysis', title: '提醒了一百次，為什麼事故還是發生？', meta: '專文 · 2026.11.03', text: '從「叫人小心」到「讓系統不容易出錯」。用米德爾頓酒廠卸桶案例，談控制層級、工程控制與一線參與設計。', href: 'article-01.html', cta: '閱讀全文' },
     { ch: 'p', short: '有效性驗證', kind: 'analysis', title: '風機基礎撐過第一個冬天，為什麼還要回去量？', meta: '專文 · 2026.11.18', text: '用 Rampion 礁體方塊試點拆解三條驗證軌道，再談 CAPA 從執行完成、功能有效到持續有效。', href: 'article-02.html', cta: '閱讀全文' },
+    { ch: 'p', short: '結案判斷', kind: 'analysis', title: '濃度降了，真的可以結案了嗎？', meta: '專文 · 2026.11.24', text: '用甲醇排氣改善、York 土壤整治與英格蘭 PFAS 監測，把「完成」和「有效」分開，先定義範圍、驗證效果、安排追蹤。', href: 'article-03.html', cta: '閱讀全文' },
     { ch: 'p', short: '外部諮詢', kind: 'official', title: 'RMP 金屬加工，用外部諮詢維持管理制度', fig: '2025', figLabel: '再獲 SHARP 認可', meta: '美國 · 第 04 期', text: '自 2013 年與 TOSHA 現場諮詢合作，2024 年無可記錄職業傷病案例。公開資料未提供各措施成效。', href: 'issue-04.html#case-1', cta: '看案例' },
     { ch: 'p', short: '保密訪談', kind: 'official', title: 'Singer Instruments，把壓力訊號轉成職務與人力調整', fig: '2 人', figLabel: '因工作壓力請病假的員工，均成功復工', meta: '英國 · 第 04 期', text: '以保密訪談釐清工作量疑慮，再增加人力及推行跨職務訓練，數週後回訪。來源沒有量化病假降幅。', href: 'issue-04.html#case-2', cta: '看案例' },
     { ch: 'p', short: '自動化搬運', kind: 'official', title: 'Dinamica Generale，以自動化減少重複搬運', fig: '約 6 萬件', figLabel: '每年移除的人工搬運，單件 5–30 公斤', meta: '義大利 · 第 04 期', text: '協作機器人、自動清洗系統與電子控制搬運輔具，總投資約 34.4 萬歐元。無完整前後事故率資料。', href: 'issue-04.html#case-3', cta: '看案例' },
