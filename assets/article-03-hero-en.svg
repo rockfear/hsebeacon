@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+<defs><pattern id="g" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#23363f"/></pattern></defs>
+<rect width="1200" height="630" fill="#1b2a33"/>
+<rect x="800" y="150" width="250" height="300" fill="url(#g)"/>
+<path d="M800 150V450H1050" fill="none" stroke="#5b6f79" stroke-width="2"/>
+<path d="M800 415H1050" stroke="#8fa0a8" stroke-width="2" stroke-dasharray="5 7"/>
+<path d="M825 180 C 880 180, 900 380, 955 404 C 985 410, 1000 411, 1015 411" fill="none" stroke="#c9a46a" stroke-width="6" stroke-linecap="round"/>
+<circle cx="825" cy="180" r="9" fill="#1b2a33" stroke="#c9a46a" stroke-width="4"/>
+<circle cx="1015" cy="411" r="9" fill="#c9a46a"/>
+<text x="842" y="172" fill="#eef1f2" font-family="Noto Sans, sans-serif" font-size="22" font-weight="700">15.95 ppm</text>
+<text x="1015" y="385" fill="#eef1f2" font-family="Noto Sans, sans-serif" font-size="22" font-weight="700" text-anchor="end">&lt; 0.888</text>
+<g transform="translate(1078 120)"><rect width="38" height="360" rx="4" fill="#c9a46a"/>
+<path stroke="#1b2a33" stroke-width="3" d="M0 20h18M0 40h10M0 60h10M0 80h10M0 100h18M0 120h10M0 140h10M0 160h10M0 180h18M0 200h10M0 220h10M0 240h10M0 260h18M0 280h10M0 300h10M0 320h10M0 340h18"/></g>
+<text x="72" y="130" fill="#c9a46a" font-family="Noto Sans CJK TC, Noto Sans, sans-serif" font-size="22" font-weight="700" letter-spacing="1">HSE Beacon  |  Risk in Practice</text><text x="72" y="212" fill="#eef1f2" font-family="Noto Sans CJK TC, Noto Sans, sans-serif" font-size="42" font-weight="900">The concentration came down.</text><text x="72" y="268" fill="#eef1f2" font-family="Noto Sans CJK TC, Noto Sans, sans-serif" font-size="42" font-weight="900">Can we really close it out?</text><rect x="72" y="308" width="56" height="4" fill="#c9a46a"/><text x="72" y="356" fill="#b6c1c6" font-family="Noto Sans CJK TC, Noto Sans, sans-serif" font-size="24" font-weight="500">From methanol exposure in Taiwan to</text><text x="72" y="392" fill="#b6c1c6" font-family="Noto Sans CJK TC, Noto Sans, sans-serif" font-size="24" font-weight="500">contaminated land in the US and PFAS</text><text x="72" y="428" fill="#b6c1c6" font-family="Noto Sans CJK TC, Noto Sans, sans-serif" font-size="24" font-weight="500">monitoring in England: rethinking the last</text><text x="72" y="464" fill="#b6c1c6" font-family="Noto Sans CJK TC, Noto Sans, sans-serif" font-size="24" font-weight="500">checkpoint in risk management</text>
+<path d="M72 560 q25 -14 50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0" fill="none" stroke="#3e5a6a" stroke-width="4" stroke-linecap="round"/>
+</svg>
