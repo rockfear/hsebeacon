@@ -35,7 +35,7 @@
 
 ## 分享列
 
-每期週報（在 `</main>` 前）與每篇專文（在延伸閱讀 `nav.next` 前）結尾都有 `<section class="share">` 分享列，並在 `</body>` 前載入 `share.js`。新增期數或專文時沿用範本即可，分享網址由 `share.js` 依當前頁面自動產生。按鈕圖示放在 `assets/`，取自 Facebook、LINE、Instagram 官方品牌素材的單色版，以 CSS 遮罩套用網站顏色。
+每期週報與每篇專文的開頭（週報在 `.issue-meta` 之後、專文在文章 `<header>` 之後，`class="share share-top"`）與結尾（週報在 `</main>` 前、專文在延伸閱讀 `nav.next` 前）各有一條 `<section class="share">` 分享列，並在 `</body>` 前載入 `share.js`。新增期數或專文時沿用範本即可，分享網址由 `share.js` 依當前頁面自動產生。按鈕圖示放在 `assets/`，取自 Facebook、LINE、Instagram 官方品牌素材的單色版，以 CSS 遮罩套用網站顏色。
 
 ## 動態圖示
 
@@ -50,3 +50,7 @@
 - 3D 海域英文文字在 `en/beacon-en.js`（`window.BEACON_I18N`）：欄目名稱、來源標籤與浮標資料，順序、欄目與連結要和 `beacon3d.js` 的 `NODES` 一致；趨勢浮標標英文國名，實戰浮標標英文關鍵字（一兩個字）。
 - 翻譯原則：週報忠於原文、用平實英文；作者專文採意譯並保留語氣，頁首註明譯自中文原文並連回中文版。
 - 新增一期時：同時建立 `en/issue-NN.html`、更新 `en/index.html`（最新週報、期數清單、海域面板預設內容）、`en/beacon-en.js`、上一期英文頁的導覽與頁尾，以及 `sitemap.xml` 的英文網址。
+
+## 期數寫法
+
+期數一律寫成兩位數：中文「第 04 期」、英文「Issue 04」，連結文字、首頁卡片、內文提及舊期數都一樣。
