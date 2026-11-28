@@ -35,6 +35,7 @@
     { ch: 'p', short: '防沖刷', kind: 'official', title: 'Rampion 分開驗證防沖刷與生態效益', fig: '7.5 萬', figLabel: '布放的礁體方塊約數', meta: '英國 · 第 02 期', text: '布放結構經第一個冬季仍穩定，生物多樣性效益仍待監測。', href: 'issue-02.html#case-2', cta: '看案例' },
     { ch: 'p', short: '通報時限', kind: 'official', title: 'GSV 把事故通報接到處理時限', fig: '逾 85%', figLabel: '案例記載的事故降幅', meta: '丹麥 · 第 02 期', text: '手機通報自動通知安全部門，並要求 36 小時內處理。各項措施的個別貢獻未拆分。', href: 'issue-02.html#case-3', cta: '看案例' },
 
+    { ch: 'r', short: '組織沉默', kind: 'analysis', title: '大家都說沒問題，主管怎麼知道真的沒問題？', meta: '專文 · 2026.11.28', text: '用 ABC 模型看會議室裡的沉默，從 Singer Instruments 的保密訪談、人力調整與回訪，談讓說出問題真的有用，並讓 BBS 也觀察主管。', href: 'article-04.html', cta: '閱讀全文' },
     { ch: 'r', short: '停工', kind: 'open', title: '時間壓力與停工判斷', meta: '研究議程', text: '工期緊迫或交接資訊不足時，哪些條件會影響工作者暫停作業的決定？', href: '#research', cta: '看研究議程' },
     { ch: 'r', short: '通報', kind: 'open', title: '主管回應與危害通報', meta: '研究議程', text: '主管首次回應的方式，以及後續是否回報處理進度，如何影響員工下次通報的意願？', href: '#research', cta: '看研究議程' },
     { ch: 'r', short: '設計', kind: 'open', title: '工作設計與控制措施', meta: '研究議程', text: '表單、工具與設備如何影響安全步驟的執行？哪些步驟最常卡住或被跳過？', href: '#research', cta: '看研究議程' }
